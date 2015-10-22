@@ -1,0 +1,41 @@
+.no-top-pad {
+  padding-top: 0px !important; }
+
+.no-top-bot-pad {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important; }
+
+body{
+  font-size: 14;
+}
+
+/*
+* Forms
+*/
+.form-control{
+  font-size: 14;
+}
+
+.inline{
+  display: inline-block;
+}
+/*
+* Navbar
+*/
+#navbar{
+  position: fixed;
+}
+
+/*
+* Sidebar
+*/
+#mainnav-container{
+  position: fixed;
+}
+
+#metricas{
+	padding: 20px 0px 15px 0px;
+    margin-left: 15%;
+    //margin-right: 10%;
+    width: 100%;
+}

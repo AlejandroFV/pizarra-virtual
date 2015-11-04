@@ -172,7 +172,7 @@
 
                                 <!-- Dropdown list -->
                                 <li>
-                                    <a href="login/login.php">
+                                    <a href="login.php">
                                         <i class="fa fa-sign-out fa-fw fa-lg"></i>
                                         <span>Salir</span>
                                     </a>
@@ -330,12 +330,12 @@
     <footer id="footer">
         <!-- Visible when the footer is static position -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <div class="hide-fixed pull-right pad-rgt">
+        <!-- <div class="hide-fixed pull-right pad-rgt">
             Made with <i class="fa fa-heart"></i> by <a class="text-primar    y" href="https://github.com/anuarml">Anuar
             Morales</a>
         </div>
 
-        <p class="pad-lft">© 2015 Pizarra Virtual- UADY</p>
+        <p class="pad-lft">© 2015 Pizarra Virtual- UADY</p> -->
 
     </footer>
     <!--===================================================-->

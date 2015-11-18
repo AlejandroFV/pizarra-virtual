@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+* {
+	padding:0;
+	margin:0;
+}
+
+body {
+	text-align: center;
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+
+button {
+	padding: 5px 10px 5px 10px;
+	color: black;
+	background-color: #00B800;
+}
+
+#header {
+	background: black;
+	color: white;
+	width: 100%;
+	height: 45px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+#body {
+	margin-top: 45px;
+}
+
+#body table {
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+	bottom: 20px;
+}
+
+table td, th {
+	padding: 5px;
+	border: solid black 1px;
+	border-collapse: collapse;
+}
+
+iframe {
+	width:80%;
+	height:600px;
+	zoom:0.85;
+	border: 0;
+}
+
+#footer {
+	text-align:center;
+	position:absolute;
+	left:0;
+	right:0;
+	margin:0 auto;
+	bottom:50px;
+}

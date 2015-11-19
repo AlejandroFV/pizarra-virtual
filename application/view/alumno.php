@@ -175,8 +175,6 @@
         </br></br></br>
         
         <input type="button" onclick="eliminarCuenta();" value="EliminarCuenta"/>
-        <input class="gestionBtn" type="button" value="Modificar Datos" onclick="irAcambiarDatos()()"/>
-
     </form>
 
         </div>

@@ -23,6 +23,10 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
             document.location.href = "cambiarDatosTutor.php";
         }
 
+        function irARegistrarAlumno(){
+            document.location.href = "registrarAlumno.php";
+        }
+
 
     </script>
 	
@@ -182,6 +186,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
         </br></br></br>
         
         <input class="gestionBtn" type="button" value="Modificar Datos" onclick="irAcambiarDatos()()"/>
+        <input class="gestionBtn" type="button" value="Registrar alumno" onclick="irARegistrarAlumno()"/>
 
     </form>
 
@@ -214,6 +219,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
                                     <a href="index.html">
                                         <i class="fa fa-dashboard"></i>
                                         <span class="menu-title"><strong>Estadísticas</strong></span>
+                                        <span class="menu-title"><a href="registrarAlumno.php"><strong>Registar Alumno</strong></a></span>
                                     </a>
                                 </li>
 

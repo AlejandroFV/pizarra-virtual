@@ -216,8 +216,6 @@ $_SESSION["role"] = "";
        </div>
      
             <td><input type="submit" value="Entrar" class="btn btn-default"/></td>
-            <td><a href="registrarAlumno.php">Registrarse</a></td>
-         
 </form>
 <div id="divStatus"></div>
 

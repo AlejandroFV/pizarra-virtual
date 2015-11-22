@@ -11,6 +11,7 @@ $longitude = $_POST["lat"];
 $latitude = $_POST["long"];
 $password = $_POST["pass"];
 $status = "";
+$group =  $_POST["group"];
 
 include 'conexion_bd.php';
 
@@ -22,7 +23,7 @@ if (mysqli_affected_rows($oLink) > 0) {
     $status = "Esta Matricula ya esta Registrada";
 } else {
     $sql1 = "INSERT INTO user(`id`, `password`, `name`, `last_name`, `email`,`gender`, `role`) VALUES ('$id','$password','$name','$last_name','$email','$gender','alumno')";
-    $sql2 = "INSERT INTO student(`id_user`, `specialty`, `latitude`, `longitude`, `group`) VALUES ('$id','$specialty','$latitude','$longitude','')";
+    $sql2 = "INSERT INTO student(`id_user`, `specialty`, `latitude`, `longitude`, `group`) VALUES ('$id','$specialty','$latitude','$longitude','$group')";
 
     if ($status == "") {
         if ($oResult1 = mysqli_query($oLink, $sql1) && $oResult2 = mysqli_query($oLink, $sql2)) {

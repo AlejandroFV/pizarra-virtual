@@ -7,9 +7,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 ?>
 <html lang="en" class=" overthrow-enabled">
 <head>
-	<meta charset="UTF-8">
-    <title>ALUMNO</title>
-    <link rel="stylesheet" type="text/css" href="../../assets/css/tarea1.css">
+	
     <script type="text/javascript" src="../../assets/js/jquery-1.11.3.js"></script>
     <script type="text/javascript" src="../../assets/js/zxml.js"></script>
     <script src="../../assets/js/jquery.js"></script>
@@ -28,6 +26,9 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
             document.location.href = "registrarAlumno.php";
         }
 
+		function irANuevaEcuacion(){
+            document.location.href = "newEquation.php";
+        }
 
     </script>
 	
@@ -56,25 +57,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 
     <script src="../../assets/js/pace.min.js" type="text/javascript"></script>
     
-   <meta charset="UTF-8">
-    <title>TUTOR</title>
-    <link rel="stylesheet" type="text/css" href="../../assets/css/tarea1.css">
-    <script type="text/javascript" src="../../assets/js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../../assets/js/zxml.js"></script>
-    <script src="../../assets/js/jquery.js"></script>
-    <script src="../../assets/js/jquery-ui.js"></script>
-    <script type="text/javascript">
-        function cerrarSesion() {
-
-            document.location.href = "login.php";
-        }
-
-        function irAcambiarDatos() {
-            document.location.href = "cambiarDatosTutor.php";
-        }
-
-
-    </script>
+  
     
   
 
@@ -205,6 +188,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
         
         <input class="gestionBtn" type="button" value="Modificar Datos" onclick="irAcambiarDatos()()"/>
         <input class="gestionBtn" type="button" value="Registrar alumno" onclick="irARegistrarAlumno()"/>
+        <input class="gestionBtn" type="button" value="Nueva ecuacion" onclick="irANuevaEcuacion()"/>
 
     </form>
 

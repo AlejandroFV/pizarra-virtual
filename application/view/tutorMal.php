@@ -1,12 +1,33 @@
-<?php
+ <?php
 session_start();
- if ($_SESSION["valida"] == false && $_SESSION["role"] != 'admin') {
- header('Location: login.php');
-}
-?> 
+if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
+    header('Location: login.php');
+ }
+
+?>
 <html lang="en" class=" overthrow-enabled">
-	
 <head>
+	<meta charset="UTF-8">
+    <title>TUTOR</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/tarea1.css">
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="../../assets/js/zxml.js"></script>
+    <script src="../../assets/js/jquery.js"></script>
+    <script src="../../assets/js/jquery-ui.js"></script>
+    <script type="text/javascript">
+        function cerrarSesion() {
+
+            document.location.href = "login.php";
+        }
+
+        function irAcambiarDatos() {
+            document.location.href = "cambiarDatosTutor.php";
+        }
+
+
+    </script>
+	
+	
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pizarra Virtual</title>
@@ -32,28 +53,7 @@ session_start();
     <script src="../../assets/js/pace.min.js" type="text/javascript"></script>
     
     
-    <meta charset="UTF-8">
-    <title>ADMIN</title>
-    <link rel="stylesheet" type="text/css" href="../../assets/css/tarea1.css">
-    <script type="text/javascript" src="../../assets/js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../../assets/js/zxml.js"></script>
-    <script src="../../assets/js/jquery.js"></script>
-    <script src="../../assets/js/jquery-ui.js"></script>
-    <script type="text/javascript">
-        function cerrarSesion() {
-            document.location.href = "login.php";
-        }
-
-        function irAeliminarCuentaTutor() {
-            document.location.href = "eliminarUsuario.php";
-        }
-
-        function irAregistrarTutor() {
-            document.location.href = "registrarTutor.php";
-        }
-
-
-    </script>
+    
   
 
     <style type="text/css">
@@ -137,7 +137,7 @@ session_start();
 
                                 <!-- Dropdown list -->
                                 <li>
-                                    <a href="login.php">
+                                    <a href="login/login.php">
                                         <i class="fa fa-user fa-fw fa-lg"></i>
                                         <span class="text-nowrap">Perfil</span>
                                     </a>
@@ -174,15 +174,19 @@ session_start();
         <!-- CONTENT CONTAINER -->
         <!--===================================================-->
         <div id="content-container">
-
-             <h1>Pizarra Virtual (Dar Formato/Estilo)</h1>
+				
+<!--Formulario a rellenar-->
+<div id="login">
+    <h1>Pizarra Virtual (Dar Formato/Estilo)</h1>
 
     <form id="menu">
         </br></br></br>
         
-        <input type="button" onclick="irAregistrarTutor();" value="RegistrarTutor"/>
-        <input type="button" onclick="irAeliminarCuentaTutor();" value="EliminarCuenta"/>
+        <input class="gestionBtn" type="button" value="Modificar Datos" onclick="irAcambiarDatos()()"/>
+
     </form>
+
+             <!--========================AQUI VA TODOOO===========================-->
 
         </div>
         <!--===================================================-->
@@ -200,20 +204,53 @@ session_start();
                     <div class="nano has-scrollbar">
                         <div class="nano-content" tabindex="0" style="right: -15px;">
                             <ul id="mainnav-menu" class="list-group">
-								<?php
-                                if ($_SESSION["role"] == 'tutor') {
-                                    echo '<li class="dropdown">
+
+                                <!--Category name-->
+                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                
+                                <!-- ESTE ES EL MENU DE TUTOR -->
+                                <?php
+                                if ($_SESSION["role"] == 'alumno') {
+                                     echo '<li class="dropdown">
   <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
     Cuenta
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
     <li><a href="#">Modificar datos</a></li>
-    
+    <li><a href="#">Eliminar cuenta</a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
   </ul>
-</li>';
+</li>
+                                <li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Documentos
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Metricas
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>'
+;
                                 } else {
-                                    if ($_SESSION["role"] == 'alumno') {
+                                    if ($_SESSION["role"] == 'tutor') {
                                         echo '<li class="dropdown">
   <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
     Cuenta
@@ -250,7 +287,8 @@ session_start();
     <li><a href="#"></a></li>
     <li><a href="#"></a></li>
   </ul>
-</li>';
+</li>'
+;
                                     } else {
                                         if ($_SESSION["role"] == 'admin') {
                                             echo '<li class="dropdown">
@@ -272,6 +310,15 @@ session_start();
                                 
                                 
                                 ?>
+                                
+                                 
+                                <!-- ESTE ES EL MENU DE ALUMNO -->
+                                
+
+<!-- ESTE ES DEL ADMIN -->
+
+
+
                                 
                             </ul>
                         </div>

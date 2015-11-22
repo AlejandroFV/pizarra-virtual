@@ -1,35 +1,15 @@
-<?php
+ <?php
 session_start();
 if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     header('Location: login.php');
 }
+
 ?>
 <html lang="en" class=" overthrow-enabled">
 <head>
-	<meta charset="UTF-8">
-    <title>ALUMNO</title>
-    <link rel="stylesheet" type="text/css" href="../../assets/css/tarea1.css">
-    <script type="text/javascript" src="../../assets/js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../../assets/js/zxml.js"></script>
-    <script src="../../assets/js/jquery.js"></script>
-    <script src="../../assets/js/jquery-ui.js"></script>
-    <script type="text/javascript">
-        function cerrarSesion() {
-
-            document.location.href = "login.php";
-        }
-
-        function irAcambiarDatos() {
-            document.location.href = "cambiarDatosTutor.php";
-        }
-
-
-    </script>
-	
-	
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pizarra Virtual</title>
+    <title>TUTOR</title>
 
     <!-- Bootstrap Core -->
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +31,25 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 
     <script src="../../assets/js/pace.min.js" type="text/javascript"></script>
     
-    
+   <meta charset="UTF-8">
+    <title>TUTOR</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/tarea1.css">
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="../../assets/js/zxml.js"></script>
+    <script src="../../assets/js/jquery.js"></script>
+    <script src="../../assets/js/jquery-ui.js"></script>
+    <script type="text/javascript">
+        function cerrarSesion() {
+
+            document.location.href = "login.php";
+        }
+
+        function irAcambiarDatos() {
+            document.location.href = "cambiarDatosTutor.php";
+        }
+
+
+    </script>
     
   
 
@@ -173,9 +171,8 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
         <!-- CONTENT CONTAINER -->
         <!--===================================================-->
         <div id="content-container">
-				
-<!--Formulario a rellenar-->
-<div id="login">
+
+             <div id="login">
     <h1>Pizarra Virtual (Dar Formato/Estilo)</h1>
 
     <form id="menu">
@@ -186,6 +183,8 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     </form>
 
              <!--========================AQUI VA TODOOO===========================-->
+
+        </div>
 
         </div>
         <!--===================================================-->
@@ -204,33 +203,78 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
                         <div class="nano-content" tabindex="0" style="right: -15px;">
                             <ul id="mainnav-menu" class="list-group">
 
-                                <!--Category name-->
-                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                <li class="list-header">Navegación</li>
+                                <?php
+                                if ($_SESSION["role"] == 'tutor') {
+                                    echo '<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Cuenta
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#">Modificar datos</a></li>
+    
+  </ul>
+</li>';
+                                } else {
+                                    if ($_SESSION["role"] == 'alumno') {
+                                        echo '<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Cuenta
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#">Modificar datos</a></li>
+    <li><a href="#">Eliminar cuenta</a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>
+                                <li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Documentos
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>
 
-                                <!-- Menu list item -->
-                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                <li>
-                                    <a href="index.html">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span class="menu-title"><strong>Estadísticas</strong></span>
-                                    </a>
-                                </li>
-
-                                <li class="list-divider"></li>
-
-                                <!-- Category name -->
-                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                <li class="list-header">Otra Categoría</li>
-
-                                <!-- Menu list item-->
-                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-briefcase"></i>
-                                        <span class="menu-title">UI Elements</span>
-                                    </a>
-                                </li>
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Metricas
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>';
+                                    } else {
+                                        if ($_SESSION["role"] == 'admin') {
+                                            echo '<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Tutores
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#">Alta de tutores</a></li>
+    <li><a href="#">Baja de tutores</a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>';
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                
+                                ?>
                             </ul>
                         </div>
                     </div>

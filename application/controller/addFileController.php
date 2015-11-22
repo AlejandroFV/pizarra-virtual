@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:text/plain");
 session_start();
-include 'dbconfig.php';
+include 'conexion_bd.php';
 if(isset($_SESSION["valida"]) && $_SESSION["role"]!='alumno'){
 
     $file = $_FILES['file']['name'];
@@ -11,7 +11,7 @@ if(isset($_SESSION["valida"]) && $_SESSION["role"]!='alumno'){
 
     $workgroup = $_POST['group'];
 
-    $folder = "../assets/uploads/";
+    $folder = "../../assets/uploads/";
 
     // quita la extensión del archivo al guardarse
     $display_name = str_replace('.' . $file_type, '', $file);
@@ -21,17 +21,18 @@ if(isset($_SESSION["valida"]) && $_SESSION["role"]!='alumno'){
     $status="";
     if(move_uploaded_file($file_loc, $folder . $display_name . '.' . $file_type)){
         $sql = "INSERT INTO tbl_file_uploads(file, type, size, workgroup) VALUES ('$display_name','$file_type','$file_size_kb', '$workgroup')";
-        mysql_query($sql);
+        mysqli_query($oLink,$sql);
+        
         $status="exito";
     } else {
         $status="error";
     }
 
-    mysql_close($oLink);
+    mysqli_close($oLink);
     echo($status);
 
 }else{
-     header('Location: login.php');
+     header('Location: ../view/login.php');
 
 }
 

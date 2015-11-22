@@ -1,3 +1,4 @@
+//JS de medioFile
 function visualizar(id){
     //gets table
     var oTable = document.getElementById('tabla');
@@ -25,18 +26,18 @@ function visualizar(id){
         case "mp4":
         case "webm":
         case "ogg":
-            divContentMedia.innerHTML="<video controls > <source src=\"../assets/uploads/"+nombreArchivo+"."+tipoArchivo+" \"  type=\"video/"+tipoArchivo+"\"></video>";
+            divContentMedia.innerHTML="<video controls > <source src=\"../../assets/uploads/"+nombreArchivo+"."+tipoArchivo+" \"  type=\"video/"+tipoArchivo+"\"></video>";
             break;
 
         case "txt":
         case "pdf":
-            divContentMedia.innerHTML="<iframe id=\"frame\" name=\"iframe_a\" src=\"../assets/uploads/"+nombreArchivo+"."+tipoArchivo+" \" ></iframe>";
+            divContentMedia.innerHTML="<iframe id=\"frame\" name=\"iframe_a\" src=\"../../assets/uploads/"+nombreArchivo+"."+tipoArchivo+" \" ></iframe>";
             break;
 
         case "png":
         case "jpg":
         case  "jpeg":
-            divContentMedia="<img src=\"../assets/uploads/"+nombreArchivo+"."+tipoArchivo+" \" >";
+            divContentMedia="<img src=\"../../assets/uploads/"+nombreArchivo+"."+tipoArchivo+" \" >";
             break;
 
         default:

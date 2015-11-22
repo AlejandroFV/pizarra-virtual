@@ -15,9 +15,9 @@ if ($_SESSION["valida"] == true   ) {
     <meta charset="utf-8">
 
 <title>Visualizar Archivos</title>
-<link rel="stylesheet" href="../assets/css/style.css" type="text/css" />
-<script type="text/javascript" src="../assets/js/verArchivos.js"></script>
-<script type="text/javascript" src="../assets/js/zxml.js"></script>
+<link rel="stylesheet" href="../../assets/css/style.css" type="text/css" />
+<script type="text/javascript" src="../../assets/js/verArchivos.js"></script>
+<script type="text/javascript" src="../../assets/js/zxml.js"></script>
 
 <script type="text/javascript">
 
@@ -52,8 +52,10 @@ if ($_SESSION["valida"] == true   ) {
     </tr>
     <div id="files">
         <?php
+        
+        
         $files=getFiles();
-        while($row = mysql_fetch_array($files)){
+        while($row = mysqli_fetch_array($files)){
             ?>
             <form action="../controller/modifyFileController.php" method ="post">
                 <tr>
@@ -67,7 +69,7 @@ if ($_SESSION["valida"] == true   ) {
 
                     </td>
                     <td><a onclick="visualizar(<?php echo $row['id']?>);return false;" href="" target="">Visualizar</a></td>
-                    <td><a href="../assets/uploads/<?php echo $row['file'] . '.' . $row['type']?>" target="no">Descargar</a></td>
+                    <td><a href="../../assets/uploads/<?php echo $row['file'] . '.' . $row['type']?>" target="no">Descargar</a></td>
                     <?php
                     if($role != 'alumno'){
                         echo "<td><input type=\"submit\" name=\"delete\" value=\"Delete\" /></td>";

@@ -220,6 +220,8 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
                                         <i class="fa fa-dashboard"></i>
                                         <span class="menu-title"><strong>Estadísticas</strong></span>
                                         <span class="menu-title"><a href="registrarAlumno.php"><strong>Registar Alumno</strong></a></span>
+                                        <span class="menu-title"><a href="indexFileView.php"><strong>IndexFileView</strong></a></span>
+                                        <span class="menu-title"><a href="addFileView.php"><strong>AddFileView</strong></a></span>
                                     </a>
                                 </li>
 

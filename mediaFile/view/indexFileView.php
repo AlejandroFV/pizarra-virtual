@@ -1,5 +1,13 @@
 <?php
-include_once '../controller/dbconfig.php';
+session_start();
+if ($_SESSION["valida"] == true   ) {
+    $role=$_SESSION["role"];
+    include_once('../controller/indexFileController.php');
+}else{
+    header('Location: login.php');
+
+}
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,55 +16,13 @@ include_once '../controller/dbconfig.php';
 
 <title>Visualizar los Archivos</title>
 <link rel="stylesheet" href="../assets/css/style.css" type="text/css" />
+<script type="text/javascript" src="../assets/js/verArchivos.js"></script>
+<script type="text/javascript" src="../assets/js/zxml.js"></script>
+
 <script type="text/javascript">
-    function visualizar(id){
-          //gets table
-    var oTable = document.getElementById('tabla');
 
-    var rowLength = oTable.rows.length;
-
-    
-    for (i = 1; i < rowLength; i++){
-  
-     oCells = oTable.rows.item(i).cells;
-       if(oCells.item(0).innerHTML==id){
-        break;
-       }
-
-  }
-
-
-    var nombreArchivo=oCells.item(1).innerHTML;
-    var tipoArchivo=oCells.item(2).innerHTML;
-
-     var divContentMedia=document.getElementById("mediaDiv");
-     divContentMedia.innerHTML="";
-     switch(tipoArchivo){
-        case "wmv":
-        case "mp4":
-        case "webm":
-        case "ogg":
-            divContentMedia.innerHTML="<video controls > <source src=\"../assets/uploads/"+nombreArchivo+"."+tipoArchivo+" \"  type=\"video/"+tipoArchivo+"\"></video>";
-        break;
-
-         case "txt":
-        case "pdf":
-            divContentMedia.innerHTML="<iframe id=\"frame\" name=\"iframe_a\" src=\"../assets/uploads/"+nombreArchivo+"."+tipoArchivo+" \" ></iframe>";
-        break;
-
-        case "png":
-        case "jpg":
-        case  "jpeg":
-            divContentMedia="<img src=\"../assets/uploads/"+nombreArchivo+"."+tipoArchivo+" \" >";
-        break;
-
-        default:
-             divContentMedia.innerHTML="<H1>No se puede visualizar el archivo.</H1>";
-
-        break;
-     }   
- }
 </script>
+
 </head>
 <body>
 
@@ -65,6 +31,7 @@ include_once '../controller/dbconfig.php';
 </div>
 
 <div id="body">
+
 	<table id="tabla">
     <tr style="background-color:black; color:white;">
     <td>ID</td>
@@ -74,64 +41,49 @@ include_once '../controller/dbconfig.php';
     <td>Grupo</td>
     <td>Ver</td>
     <td>Descargar</td>
-    <td></td>
-    <td></td>
-    </tr>
-
-    <!-- Función para obtener el grupo del alumno -->
-
-    <!--Si es alumno, que se vean sólo los archivos de su grupo:
-            $sql = "SELECT * FROM tbl_file_uploads WHERE workbook = ' *grupo del alumno* '";
-            
-        Si no es alumno, se muestran todos
-            $sql = "SELECT * FROM tbl_file_uploads";
-    -->
-
-    <?php
-	$sql = "SELECT * FROM tbl_file_uploads";
-	$query = mysql_query($sql);
-	while($row = mysql_fetch_array($query)){
-		?>
-        <form action="../controller/modifyFileController.php" method ="post">
-            <tr>
-                <td><input type="text" name="id" value="<?php echo $row['id'] ?>" readonly/>
-                </td>
-                <td><?php echo $row['file'] ?></td>
-                <td><?php echo $row['type'] ?></td>
-                <td><?php echo $row['size'] ?> kb</td>
-                <td>
-                    <select name="grupo">
-                        <option value="1"> 1 </option>
-                        <option value="5"> 5 </option>
-                        <option value="6"> 12 </option>
-                        <?php echo '<option selected>'.$row['workgroup'] .'</option>'?>
-
-                    </select>
-
-
-                </td>
-                <td><a onclick="visualizar(<?php echo $row['id']?>);return false;" target="">Visualizar</td>
-                <td><a href="../assets/uploads/<?php echo $row['file'] . '.' . $row['type']?>" target="no">Descargar</a></td>
-                <td><input type="submit" name="delete" value="Delete" /></td>
-                <td><input type="submit" name="edit" value="Edit" /></td>
-
-            </tr>
-        </form>
-
         <?php
-	}
 
-	?>
+        if($role != 'alumno'){
+            echo "<td></td><td></td>";
+        }
+
+        ?>
+
+    </tr>
+    <div id="files">
+        <?php
+        $files=getFiles();
+        while($row = mysql_fetch_array($files)){
+            ?>
+            <form action="../controller/modifyFileController.php" method ="post">
+                <tr>
+                    <td><input type="text" name="id" value="<?php echo $row['id'] ?>" readonly/>
+                    </td>
+                    <td><?php echo $row['file'] ?></td>
+                    <td><?php echo $row['type'] ?></td>
+                    <td><?php echo $row['size'] ?> kb</td>
+                    <td>
+                        <input type="text" name="id" value="<?php echo $row['id'] ?>" />
+
+                    </td>
+                    <td><a onclick="visualizar(<?php echo $row['id']?>);return false;" href="" target="">Visualizar</a></td>
+                    <td><a href="../assets/uploads/<?php echo $row['file'] . '.' . $row['type']?>" target="no">Descargar</a></td>
+                    <?php
+                    if($role != 'alumno'){
+                        echo "<td><input type=\"submit\" name=\"delete\" value=\"Delete\" /></td>";
+
+                        echo  "<td><input type=\"submit\" name=\"edit\" value=\"Edit\" /></td>";
+                    }?>
+
+                </tr>
+            </form>
+        <?php
+        }
+        ?>
+    </div>
     </table>
 
 
-    <?php
-    if(isset($_POST['deleteItem']) and is_numeric($_POST['deleteItem'])){
-        $id_del = $_POST['deleteItem'];
-        $sqldel = "DELETE FROM `archivos_ajax`.`tbl_file_uploads` WHERE `tbl_file_uploads`.`id` = $id_del";
-        mysql_query($sqldel);
-    }
-    ?>
         <a href="addFileView.php">Subir más archivos</a><br><br>
 
     <div id="mediaDiv">

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once('../model/likelyAnswer.php');
 require_once('../daos/likelyAnswerDao.php');
 

@@ -2,6 +2,7 @@
 session_start();
 if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
     header('Location: login.php');
+	error_reporting(0);
 }
 
 error_reporting(E_ALL);
@@ -207,7 +208,7 @@ $equations_size = sizeof($equations);
         <!--===================================================-->
         <div id="content-container">
 
-             <h1>Pizarra Virtual (Dar Formato/Estilo)</h1>
+             <h1>Pizarra Virtual </h1>
 
     <!-- <form id="menu">
         </br></br></br>

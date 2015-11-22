@@ -6,14 +6,14 @@ $equationController = new EquationController();
 $equations = $equationController->getEquations();
 session_start();
 $messages = "";
-//and isset($_SESSION['matricula'])
-if ($equations !== null ) {
+
+if ($equations !== null and isset($_SESSION['id'])) {
   $i = 0;
   $givenAnswerController = new GivenAnswerController();
   foreach ($equations as $equation) {
     $answer = $_POST['answer' . $i];
     $answer = str_replace(' ', '', $answer);
-    $givenAnswerObject = $givenAnswerController->createGivenAnswer($equation->getEquation(), $_SESSION['matricula'], $answer);
+    $givenAnswerObject = $givenAnswerController->createGivenAnswer($equation->getEquation(), $_SESSION['id'], $answer);
     $correct = strcasecmp($answer, $equation->getAnswer());
     if ($correct == 0) {
       $messages .= '<strong class="correct"><i class="fa fa-check"></i></strong>Respuesta correcta@';

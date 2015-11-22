@@ -7,6 +7,31 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 ?>
 <html lang="en" class=" overthrow-enabled">
 <head>
+	<meta charset="UTF-8">
+    <title>ALUMNO</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/tarea1.css">
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="../../assets/js/zxml.js"></script>
+    <script src="../../assets/js/jquery.js"></script>
+    <script src="../../assets/js/jquery-ui.js"></script>
+    <script type="text/javascript">
+        function cerrarSesion() {
+
+            document.location.href = "login.php";
+        }
+
+        function irAcambiarDatos() {
+            document.location.href = "cambiarDatosTutor.php";
+        }
+
+        function irARegistrarAlumno(){
+            document.location.href = "registrarAlumno.php";
+        }
+
+
+    </script>
+	
+	
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TUTOR</title>
@@ -179,6 +204,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
         </br></br></br>
         
         <input class="gestionBtn" type="button" value="Modificar Datos" onclick="irAcambiarDatos()()"/>
+        <input class="gestionBtn" type="button" value="Registrar alumno" onclick="irARegistrarAlumno()"/>
 
     </form>
 

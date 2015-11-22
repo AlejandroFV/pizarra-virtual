@@ -4,13 +4,21 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
     header('Location: login.php');
 }
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+require_once('../controller/equationController.php');
+$equationController = new EquationController();
+$equations = $equationController->getEquations();
+$equations_size = sizeof($equations);
+
 ?>
 <html lang="en" class=" overthrow-enabled">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pizarra Virtual</title>
-
+ <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
     <!-- Bootstrap Core -->
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -38,7 +46,30 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
     <script type="text/javascript" src="../../assets/js/zxml.js"></script>
     <script src="../../assets/js/jquery.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
+    
+   
+  <link href='https://fonts.googleapis.com/css?family=Homemade+Apple' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="../../assets/js/jquery.js"></script>
+  <script type="text/javascript">
+    function sendRequest() {
+      $.post("../controller/validator.php", $('#equations-form').serialize()).done(function (data) {
+        data = data.split("@");
+        displayResult(data);
+      });
+    }
+    function displayResult(sMensaje) {
+      for(j = 0; j < <?php echo $equations_size?>; j++){
+        var divMessage = document.getElementById("answer"+j);
+        divMessage.innerHTML = sMensaje[j];
+      }
+    }
+  </script>
+    
     <script type="text/javascript">
+    
+    
+    
         function cerrarSesion() {
 
             document.location.href = "login.php";
@@ -178,13 +209,41 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
 
              <h1>Pizarra Virtual (Dar Formato/Estilo)</h1>
 
-    <form id="menu">
+    <!-- <form id="menu">
         </br></br></br>
         
         <input type="button" onclick="eliminarCuenta();" value="EliminarCuenta"/>
-        <input class="gestionBtn" type="button" value="Modificar Datos" onclick="irAcambiarDatos()()"/>
+    </form> -->
+    <div id="blackboard">
+  <h2>Pizarra virtual</h2>
 
+  <div id="exercises">
+    <form id="equations-form" action="../controller/validator.php" method="post" onsubmit="sendRequest(); return false;">
+      <div id="equations">
+        <ol>
+          <?php
+          if ($equations !== null) {
+            $i = 0;
+            foreach ($equations as $equation) {?>
+              <li>
+                <label><?php echo $equation->getEquation(); ?> = </label>
+                <input type="text" class="answers" name="answer<?php echo $i; ?>">
+
+                <!-- TODO validate result --> 
+                <p id="answer<?php echo $i; ?>" class="checked"></p>
+              </li>
+            <?php
+              $i++;
+            }
+          }
+          ?>
+        </ol>
+      </div>
+      <button id="send"><i class="fa fa-chevron-circle-up"></i> Enviar</button>
     </form>
+  </div>
+</div>
+
 
         </div>
         <!--===================================================-->

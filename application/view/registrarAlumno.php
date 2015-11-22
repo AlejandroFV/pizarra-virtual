@@ -1,6 +1,6 @@
 <html lang="en" class=" overthrow-enabled">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
     <title>Gestion Alumnos</title>
     <link rel="stylesheet" type="text/css" href="../../assets/css/proyecto.css">
     <script type="text/javascript" src="../../assets/js/zxml.js"></script>
@@ -53,8 +53,8 @@
 
 
     </script>
-	
-	
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pizarra Virtual</title>
@@ -78,10 +78,7 @@
     <link href="../../assets/css/app.css" rel="stylesheet">
 
     <script src="../../assets/js/pace.min.js" type="text/javascript"></script>
-    
-    
-    
-  
+
 
     <style type="text/css">
         .jqstooltip {
@@ -201,73 +198,77 @@
         <!-- CONTENT CONTAINER -->
         <!--===================================================-->
         <div id="content-container">
-				<form action="../controller/altaAlumno.php" method="post" onsubmit="sendRequest();
+            <form action="../controller/altaAlumno.php" method="post" onsubmit="sendRequest();
                 return false" class="col-xs-4">
-			
-            <h1>Registro</h1>
-    
-			<div class="form-group " >
-            <label>Matricula:</label>
-            <input name="mat" class="form-control" type="number" required/>
-			</div>
-			
-			<div class="form-group " >
-            <label>Nombre:</label>
-            <input name="nom" class="form-control" type="text" required/>
-			</div>
-			
-			<div class="form-group " >
-           <label>Apellido:</label>
-            <input name="ap" class="form-control" type="text" required/>
-			</div>
-			
-       		<div class="form-group " >	
-            <label>Mail:</label>
-            <input name="mail" class="form-control" type="email" required/>
-        	</div>
-        	
-      		<div class="form-group " >
-            <label>Carrera:</label>
-            <input name="carrera" class="form-control" type="text" required/>
-       		</div>
-       		
-        
-            <div class="form-group " >
-                <label>Genero:</label>
-            <SELECT name="sex" class="form-control" required>
-                    <OPTION value="hombre">hombre</OPTION>
-                    <OPTION value="mujer">mujer</OPTION>
-                </SELECT>
-        	</div>
-        	
-        	<div class="form-group " >
-            <label>Latitud:</label>
-            <input name="lat" class="form-control" type="number" step="any" required/>
-        	</div>
-        	
-        	<div class="form-group " >
-            <label>Longitud:</label>
-            <input name="long" class="form-control" type="number" step="any" required/>
-        	</div>
-        	
-        	<div class="form-group " >
-            <label>Contrasena:</label>
-            <input name="pass" class="form-control" type="password" required/>
-      		</div>
 
-       
-            <input type="submit" value="Registrarse" name="btnEnviar" class="btn btn-default"/>
-            <input type="button" value="Salir" name="btnSalir" onclick="salir()" class="btn btn-default"/>
-        
-</form>
-<div id="divStatus"></div>
-             <!--========================AQUI VA TODOOO===========================-->
+                <h1>Registro de alumno</h1>
+
+                <div class="form-group ">
+                    <label>Matricula:</label>
+                    <input name="mat" class="form-control" type="number" required/>
+                </div>
+
+                <div class="form-group ">
+                    <label>Nombre:</label>
+                    <input name="nom" class="form-control" type="text" required/>
+                </div>
+
+                <div class="form-group ">
+                    <label>Apellido:</label>
+                    <input name="ap" class="form-control" type="text" required/>
+                </div>
+
+                <div class="form-group ">
+                    <label>Mail:</label>
+                    <input name="mail" class="form-control" type="email" required/>
+                </div>
+
+                <div class="form-group ">
+                    <label>Carrera:</label>
+                    <input name="carrera" class="form-control" type="text" required/>
+                </div>
+
+
+                <div class="form-group ">
+                    <label>Genero:</label>
+                    <select name="sex" class="form-control" required>
+                        <OPTION value="hombre">hombre</OPTION>
+                        <OPTION value="mujer">mujer</OPTION>
+                    </select>
+                </div>
+
+                <div class="form-group ">
+                    <label>Latitud:</label>
+                    <input name="lat" class="form-control" type="number" step="any" required/>
+                </div>
+
+                <div class="form-group ">
+                    <label>Longitud:</label>
+                    <input name="long" class="form-control" type="number" step="any" required/>
+                </div>
+
+                <div class="form-group ">
+                    <label>Contrasena:</label>
+                    <input name="pass" class="form-control" type="password" required/>
+                </div>
+
+                <div class="form-group ">
+                    <label>Grupo:</label>
+                    <input name="group" class="form-control" type="text" required/>
+                </div>
+
+                <input type="submit" value="Registrarse" name="btnEnviar" class="btn btn-default"/>
+                <input type="button" value="Salir" name="btnSalir" onclick="salir()" class="btn btn-default"/>
+
+            </form>
+            <div id="divStatus"></div>
+            <!--========================AQUI VA TODOOO===========================-->
 
         </div>
         <!--===================================================-->
         <!-- END OF CONTENT CONTAINER -->
 
-         <!--SIDEBAR-->
+        <!--SIDEBAR-->
         <!--===================================================-->
 
         <nav id="mainnav-container" data-sm="mainnav-sm" data-all="mainnav-lg">
@@ -319,7 +320,6 @@
         <!-- END OF MAIN NAVIGATION -->
         <!--===================================================-->
 
-        
 
     </div>
     <!--===================================================-->
@@ -327,17 +327,7 @@
 
     <!-- FOOTER -->
     <!--===================================================-->
-    <footer id="footer">
-        <!-- Visible when the footer is static position -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <!-- <div class="hide-fixed pull-right pad-rgt">
-            Made with <i class="fa fa-heart"></i> by <a class="text-primar    y" href="https://github.com/anuarml">Anuar
-            Morales</a>
-        </div>
 
-        <p class="pad-lft">© 2015 Pizarra Virtual- UADY</p> -->
-
-    </footer>
     <!--===================================================-->
     <!-- END OF FOOTER -->
 

@@ -14,7 +14,7 @@ if ($_SESSION["valida"] == true   ) {
 <head>
     <meta charset="utf-8">
 
-<title>Visualizar los Archivos</title>
+<title>Visualizar Archivos</title>
 <link rel="stylesheet" href="../assets/css/style.css" type="text/css" />
 <script type="text/javascript" src="../assets/js/verArchivos.js"></script>
 <script type="text/javascript" src="../assets/js/zxml.js"></script>

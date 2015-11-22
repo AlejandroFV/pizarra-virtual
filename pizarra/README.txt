@@ -1,1 +1,0 @@
-OJO: el 20 de noviembre se actualizará este README para explicar los componentes de este módulo

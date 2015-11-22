@@ -12,9 +12,8 @@ session_start();
 <!-- Esta página es sólo para el tutor -->
 <meta charset="utf-8">
 <title>Subir archivos</title>
-<link rel="stylesheet" href="../assets/css/style.css" type="text/css" />
-<script type="text/javascript" src="../assets/js/zxml.js"></script>
-    <script src="http://localhost/ajax/pizarra-virtual/mediaFile/controller/addFileController.php"></script>
+<link rel="stylesheet" href="../../assets/css/style.css" type="text/css" />
+<script type="text/javascript" src="../../assets/js/zxml.js"></script>
 <script type="text/javascript" >
     "use strict";
 

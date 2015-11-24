@@ -118,7 +118,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'administrador') {
 						<!-- BRAND LOGO & TEXT -->
 						<!--===================================================-->
 						<div class="navbar-header">
-							<a href="index.html" class="navbar-brand"> <img src="../../assets/images/logo.png" name="Nifty Admin" id="Nifty Admin" class="brand-icon"> <span class="brand-title"> <span class="brand-text">Pizarra Virtual</span> </span> </a>
+							<a href="paginaPrincipal.php" class="navbar-brand"> <img src="../../assets/images/logo.png" name="Nifty Admin" id="Nifty Admin" class="brand-icon"> <span class="brand-title"> <span class="brand-text">Pizarra Virtual</span> </span> </a>
 						</div>
 						<!--===================================================-->
 						<!-- END OF BRAND LOGO & TEXT -->

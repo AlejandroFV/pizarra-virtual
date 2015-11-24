@@ -19,6 +19,7 @@ $equations_size = sizeof($equations);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pizarra Virtual</title>
  <link rel="stylesheet" href="../../assets/css/site.css">
+ <link rel="stylesheet" href="../../assets/css/chat.css" type="text/css" />
   <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
     <!-- Bootstrap Core -->
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -244,6 +245,17 @@ $equations_size = sizeof($equations);
     </form>
   </div>
 </div>
+
+<div id="page-wrap" >
+        
+        <div id="chat-wrap"><div id="chat-area"></div></div>
+        
+        <form id="send-message-area">
+            <p>Mensaje: </p>
+            <textarea id="sendie" maxlength = '100' ></textarea>
+        </form>
+    
+    </div>
 
 
         </div>

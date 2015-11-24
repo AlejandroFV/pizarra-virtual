@@ -5,6 +5,7 @@
     /*float: right;*/
     float: left;
     margin-left: 100px;
+    margin-bottom: 100px;
     margin-right: 2em;
     background: url("../images/board.jpg");
     background-size: contain;
@@ -59,7 +60,7 @@ h2{
     cursor: pointer;
 }
 #equations{
-    /*overflow-y: scroll;*/
+    overflow-y: scroll;
     height: 55%;
     width: 90%;
     margin: auto;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2015 a las 20:33:24
--- Versión del servidor: 5.6.20
--- Versión de PHP: 5.5.15
+-- Tiempo de generación: 24-11-2015 a las 03:05:49
+-- Versión del servidor: 5.6.17
+-- Versión de PHP: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,7 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `equations` (
   `equation` varchar(45) NOT NULL,
-  `answer` varchar(45) NOT NULL
+  `answer` varchar(45) NOT NULL,
+  PRIMARY KEY (`equation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -48,10 +49,13 @@ INSERT INTO `equations` (`equation`, `answer`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `given_answers` (
-`id_answer` int(11) NOT NULL,
+  `id_answer` int(11) NOT NULL AUTO_INCREMENT,
   `equation` varchar(45) NOT NULL,
   `user` varchar(255) NOT NULL,
-  `answer` varchar(45) NOT NULL
+  `answer` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_answer`),
+  KEY `producto_notable_idx` (`equation`),
+  KEY `usuario_idx` (`user`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
@@ -64,7 +68,8 @@ CREATE TABLE IF NOT EXISTS `likely_answers` (
   `equation` varchar(45) NOT NULL,
   `likely_answer` varchar(45) NOT NULL,
   `message` varchar(45) NOT NULL,
-  `count` int(11) NOT NULL
+  `count` int(11) NOT NULL,
+  KEY `producto_notable_idx` (`equation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -89,7 +94,10 @@ CREATE TABLE IF NOT EXISTS `student` (
   `specialty` varchar(255) NOT NULL,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
-  `group` varchar(100) NOT NULL
+  `group` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_user`),
+  KEY `id_user` (`id_user`),
+  KEY `id_user_2` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -99,6 +107,21 @@ CREATE TABLE IF NOT EXISTS `student` (
 INSERT INTO `student` (`id_user`, `specialty`, `latitude`, `longitude`, `group`) VALUES
 ('001', 'lis', 666, 666, '3'),
 ('123', 'LIS', -333.444, 1111.22, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_file_uploads`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_file_uploads` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `file` varchar(100) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `size` int(11) NOT NULL,
+  `workgroup` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -113,7 +136,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL
+  `role` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -127,49 +151,6 @@ INSERT INTO `user` (`id`, `password`, `name`, `last_name`, `email`, `gender`, `r
 ('456', 'hola', 'tutor', 'tutor', 'tutor@gmail.com', 'mujer', 'tutor');
 
 --
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `equations`
---
-ALTER TABLE `equations`
- ADD PRIMARY KEY (`equation`);
-
---
--- Indices de la tabla `given_answers`
---
-ALTER TABLE `given_answers`
- ADD PRIMARY KEY (`id_answer`), ADD KEY `producto_notable_idx` (`equation`), ADD KEY `usuario_idx` (`user`);
-
---
--- Indices de la tabla `likely_answers`
---
-ALTER TABLE `likely_answers`
- ADD KEY `producto_notable_idx` (`equation`);
-
---
--- Indices de la tabla `student`
---
-ALTER TABLE `student`
- ADD PRIMARY KEY (`id_user`), ADD KEY `id_user` (`id_user`), ADD KEY `id_user_2` (`id_user`);
-
---
--- Indices de la tabla `user`
---
-ALTER TABLE `user`
- ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `given_answers`
---
-ALTER TABLE `given_answers`
-MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
 -- Restricciones para tablas volcadas
 --
 
@@ -177,20 +158,20 @@ MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- Filtros para la tabla `given_answers`
 --
 ALTER TABLE `given_answers`
-ADD CONSTRAINT `fk_equation` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_user` FOREIGN KEY (`user`) REFERENCES `student` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_equation` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`user`) REFERENCES `student` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `likely_answers`
 --
 ALTER TABLE `likely_answers`
-ADD CONSTRAINT `fk_eq` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_eq` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `student`
 --
 ALTER TABLE `student`
-ADD CONSTRAINT `fk_id_user_student_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `fk_id_user_student_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

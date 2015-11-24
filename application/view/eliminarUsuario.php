@@ -140,6 +140,9 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'administrador') {
 										class="img-circle img-user media-object"> </span>
 									<div class="username hidden-xs">
 										<!--Obtener el nombre de usuario aqui-->
+										<?php
+										echo $_SESSION["name"] . " " . $_SESSION["last_name"];
+										?>
 									</div> </a>
 									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -184,15 +187,15 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'administrador') {
 					<div id="content-container">
 						<form action="../controller/bajaUsuario.php" method="post" onsubmit="sendRequest();
 						return false" class="col-xs-4">
-						<h1>Eliminar Usuario</h1>
-						<div class="form-group " >		
-				            <label>Matricula: </label>
-				           	<input name="mat" class="form-control" type="number" required/>
-        				</div>
+							<h1>Eliminar Usuario</h1>
+							<div class="form-group " >
+								<label>Matricula: </label>
+								<input name="mat" class="form-control" type="number" required/>
+							</div>
 
-										<input type="submit" value="Eliminar" name="btnEnviar" class="btn btn-default"/>
-									</tr>
-								</tbody>
+							<input type="submit" value="Eliminar" name="btnEnviar" class="btn btn-default"/>
+							</tr>
+							</tbody>
 							</table>
 						</form>
 						<div id="divStatus"></div>
@@ -261,12 +264,12 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'administrador') {
 					<!-- Visible when the footer is static position -->
 					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 					<!-- <div class="hide-fixed pull-right pad-rgt">
-						Made with <i class="fa fa-heart"></i> by <a class="text-primar    y" href="https://github.com/anuarml">Anuar
-						Morales</a>
+					Made with <i class="fa fa-heart"></i> by <a class="text-primar    y" href="https://github.com/anuarml">Anuar
+					Morales</a>
 					</div>
 
 					<p class="pad-lft">
-						© 2015 Pizarra Virtual- UADY
+					© 2015 Pizarra Virtual- UADY
 					</p> -->
 
 				</footer>

@@ -159,7 +159,11 @@ $equations_size = sizeof($equations);
                                  class="img-circle img-user media-object">
                         </span>
 
-                            <div class="username hidden-xs"><!--Obtener el nombre de usuario aqui--></div>
+                            <div class="username hidden-xs"><!--Obtener el nombre de usuario aqui-->
+                            	<?php
+                            	echo $_SESSION["name"]." ".$_SESSION["last_name"];
+                            	?>
+                            </div>
                         </a>
                         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 

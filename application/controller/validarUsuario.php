@@ -3,6 +3,8 @@ session_start();
 header("Content-Type:text/plain");
 $_SESSION["valida"] = false;
 $_SESSION["role"] = "";
+$_SESSION["name"] = "";
+$_SESSION["last_name"] = "";
 
 include 'conexion_bd.php';
 
@@ -13,7 +15,7 @@ $status = "";
 
 //Creamos los querys
 $query1 = "SELECT * FROM  user WHERE id = '" . $usuario . "' AND password = '" . $password . "'";
-$query2 = "SELECT `role` FROM user WHERE id = '" . $usuario . "'";
+$query2 = "SELECT name, last_name,role FROM user WHERE id = '" . $usuario . "'";
 //Realizamos la conexión
 
 
@@ -23,6 +25,8 @@ if ($status == "") {
         $_SESSION["id"] = $usuario;
         $row = mysqli_fetch_assoc(mysqli_query($oLink, $query2));
         $_SESSION["role"] = $row['role'];
+		$_SESSION["name"] = $row['name'];
+		$_SESSION["last_name"] = $row['last_name'];
         $status = $_SESSION["role"];
     } else {
         $status = "No existe el usuario ";

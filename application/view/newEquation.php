@@ -47,7 +47,7 @@ if (isset($_GET['equation'])) {
 
 		<meta charset="UTF-8">
 		<title>Ingresar Producto Notable</title>
-		 <!-- <link rel="stylesheet" href="../../assets/css/site.css">  -->
+		<!-- <link rel="stylesheet" href="../../assets/css/site.css">  -->
 		<script type="text/javascript" src="../../assets/js/jquery.js"></script>
 		<script type="text/javascript">
 			var i = 0;
@@ -148,6 +148,9 @@ if (isset($_GET['equation'])) {
 										class="img-circle img-user media-object"> </span>
 									<div class="username hidden-xs">
 										<!--Obtener el nombre de usuario aqui-->
+										<?php
+										echo $_SESSION["name"] . " " . $_SESSION["last_name"];
+										?>
 									</div> </a>
 									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -191,29 +194,29 @@ if (isset($_GET['equation'])) {
 					<!--===================================================-->
 					<div id="content-container">
 
-								<h3>Ingrese la ecuación que desee evaluar junto con la respuesta correcta.</h3>
-							
-								<h4><small>Se pueden agregar posibles errores junto con mensajes hacía el usuario al cometerlos</small></h4>
-							
-							<div class="col-xs-4">
-						<form id="newEquation" action="" >
-							
-							<div class="form-group ">
-								<label for="equation"> Producto notable: </label>
-								<input type="text" id="equation" name="equation" class="form-control" required>
-							</div>
-							<div class="form-group ">
-								<label for="answer"> Respuesta correcta: </label>
-								<input type="text" id="answer" name="answer" class="form-control" required>
-							</div>
-							<button id="save" class="btn btn-default">
-								Guardar
+						<h3>Ingrese la ecuación que desee evaluar junto con la respuesta correcta.</h3>
+
+						<h4><small>Se pueden agregar posibles errores junto con mensajes hacía el usuario al cometerlos</small></h4>
+
+						<div class="col-xs-4">
+							<form id="newEquation" action="" >
+
+								<div class="form-group ">
+									<label for="equation"> Producto notable: </label>
+									<input type="text" id="equation" name="equation" class="form-control" required>
+								</div>
+								<div class="form-group ">
+									<label for="answer"> Respuesta correcta: </label>
+									<input type="text" id="answer" name="answer" class="form-control" required>
+								</div>
+								<button id="save" class="btn btn-default">
+									Guardar
+								</button>
+
+							</form>
+							<button id="add" onclick="addLikelyAnswer();" class="btn btn-default">
+								Agregar posible respuesta
 							</button>
-							
-						</form>
-						<button id="add" onclick="addLikelyAnswer();" class="btn btn-default">
-							Agregar posible respuesta
-						</button>
 						</div>
 
 					</div>

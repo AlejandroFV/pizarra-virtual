@@ -1,356 +1,340 @@
 // <?php
 // session_start();
 // if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
-    // header('Location: login.php');
+// header('Location: login.php');
 // }
-// ?>
+//
+?>
 <html lang="en" class=" overthrow-enabled">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pizarra Virtual</title>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pizarra Virtual</title>
 
-    <!-- Bootstrap Core -->
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Bootstrap Core -->
+		<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link href="../../assets/fonts/css/font-awesome.min.css" rel="stylesheet">
+		<!-- Font Awesome -->
+		<link href="../../assets/fonts/css/font-awesome.min.css" rel="stylesheet">
 
-    <!-- Admin Core -->
-    <link href="../../assets/css/nifty.min.css" rel="stylesheet">
+		<!-- Admin Core -->
+		<link href="../../assets/css/nifty.min.css" rel="stylesheet">
 
-    <!-- Roboto Font -->
-    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+		<!-- Roboto Font -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
 
-    <!-- Link to theme -->
-    <link href="../../assets/css/themes/themes-navbar/theme-ocean.min.css" rel="stylesheet">
+		<!-- Link to theme -->
+		<link href="../../assets/css/themes/themes-navbar/theme-ocean.min.css" rel="stylesheet">
 
-    <!-- Application css -->
-    <link href="../../assets/css/app.css" rel="stylesheet">
+		<!-- Application css -->
+		<link href="../../assets/css/app.css" rel="stylesheet">
 
-    <script src="../../assets/js/pace.min.js" type="text/javascript"></script>
-    
-    
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
-    <title>Gestion Alumnos</title>
-    
-    <script type="text/javascript" src="../../assets/js/zxml.js"></script>
-    <script type="text/javascript">
-        var realizar = 1;
+		<script src="../../assets/js/pace.min.js" type="text/javascript"></script>
 
-        function sendRequest() {
-            var oForm = document.forms[0];
-            var sBody = getRequestBody(oForm);
-            var oXmlHttp = zXmlHttp.createRequest();
-            oXmlHttp.open("post", oForm.action, true);
-            oXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+		<title>Gestion Alumnos</title>
 
-            oXmlHttp.onreadystatechange = function () {
-                if (oXmlHttp.readyState == 4) {
-                    if (oXmlHttp.status == 200) {
-                        saveResult(oXmlHttp.responseText);
+		<script type="text/javascript" src="../../assets/js/zxml.js"></script>
+		<script type="text/javascript">
+			var realizar = 1;
 
-                    } else {
-                        saveResult("Ocurrio un error: " + oXmlHttp.statusText)
-                    }
-                }
-            };
-            oXmlHttp.send(sBody);
-        }
+			function sendRequest() {
+				var oForm = document.forms[0];
+				var sBody = getRequestBody(oForm);
+				var oXmlHttp = zXmlHttp.createRequest();
+				oXmlHttp.open("post", oForm.action, true);
+				oXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-        function getRequestBody(oForm) {
-            //funcion que devuelve una cadena de consulta
-            var aParams = new Array();
-            for (var i = 0; i < oForm.elements.length; i++) {
-                var sParam = encodeURIComponent(oForm.elements[i].name);
-                sParam += "=";
-                sParam += encodeURIComponent(oForm.elements[i].value);
-                aParams.push(sParam);
-            }
-            aParams.push(sParam);
-            return aParams.join("&");
-        }
+				oXmlHttp.onreadystatechange = function() {
+					if (oXmlHttp.readyState == 4) {
+						if (oXmlHttp.status == 200) {
+							saveResult(oXmlHttp.responseText);
 
-        function saveResult(sMensaje) {
+						} else {
+							saveResult("Ocurrio un error: " + oXmlHttp.statusText)
+						}
+					}
+				};
+				oXmlHttp.send(sBody);
+			}
 
-            var divStatus = document.getElementById("divStatus");
-            divStatus.innerHTML = sMensaje;
-        }
+			function getRequestBody(oForm) {
+				//funcion que devuelve una cadena de consulta
+				var aParams = new Array();
+				for (var i = 0; i < oForm.elements.length; i++) {
+					var sParam = encodeURIComponent(oForm.elements[i].name);
+					sParam += "=";
+					sParam += encodeURIComponent(oForm.elements[i].value);
+					aParams.push(sParam);
+				}
+				aParams.push(sParam);
+				return aParams.join("&");
+			}
 
-        function salir() {
-            window.location = "login.php";
-        }
+			function saveResult(sMensaje) {
 
+				var divStatus = document.getElementById("divStatus");
+				divStatus.innerHTML = sMensaje;
+			}
 
-    </script>
-  
+			function salir() {
+				window.location = "login.php";
+			}
 
-    <style type="text/css">
-        .jqstooltip {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            visibility: hidden;
-            background-color: #212633;
-            border-radius: 2px;
-            color: white;
-            text-align: right;
-            white-space: nowrap;
-            padding: 7px 14px;
-            z-index: 10000;
-        }
+		</script>
 
-        .jqsfield {
-            color: white;
-            font-size: 14px;
-            text-align: right;
-        }
-    </style>
+		<style type="text/css">
+			.jqstooltip {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				visibility: hidden;
+				background-color: #212633;
+				border-radius: 2px;
+				color: white;
+				text-align: right;
+				white-space: nowrap;
+				padding: 7px 14px;
+				z-index: 10000;
+			}
 
-<body class=" nifty-ready pace-done">
-<!-- Page Loader -->
-<div class="pace pace-inactive">
-    <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
-        <div class="pace-progress-inner"></div>
-    </div>
-    <div class="pace-activity"></div>
-</div>
-<div id="container" class="effect mainnav-lg navbar-fixed">
-    <!-- Navbar -->
-    <!--===================================================-->
-    <header id="navbar">
-        <div id="navbar-container" class="boxed">
+			.jqsfield {
+				color: white;
+				font-size: 14px;
+				text-align: right;
+			}
+		</style>
 
-            <!-- BRAND LOGO & TEXT -->
-            <!--===================================================-->
-            <div class="navbar-header">
-                <a href="index.html" class="navbar-brand">
-                    <img src="../../assets/images/logo.png" name="Nifty Admin" id="Nifty Admin" class="brand-icon">
-                    <span class="brand-title">
-                      <span class="brand-text">Pizarra Virtual</span>
-                    </span>
-                </a>
-            </div>
-            <!--===================================================-->
-            <!-- END OF BRAND LOGO & TEXT -->
+		<body class=" nifty-ready pace-done">
+			<!-- Page Loader -->
+			<div class="pace pace-inactive">
+				<div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+					<div class="pace-progress-inner"></div>
+				</div>
+				<div class="pace-activity"></div>
+			</div>
+			<div id="container" class="effect mainnav-lg navbar-fixed">
+				<!-- Navbar -->
+				<!--===================================================-->
+				<header id="navbar">
+					<div id="navbar-container" class="boxed">
 
-            <!-- NAVBAR DROPDOWN -->
-            <!--===================================================-->
-            <div class="navbar-content clearfix">
-                <ul class="nav navbar-top-links pull-left">
-                </ul>
+						<!-- BRAND LOGO & TEXT -->
+						<!--===================================================-->
+						<div class="navbar-header">
+							<a href="index.html" class="navbar-brand"> <img src="../../assets/images/logo.png" name="Nifty Admin" id="Nifty Admin" class="brand-icon"> <span class="brand-title"> <span class="brand-text">Pizarra Virtual</span> </span> </a>
+						</div>
+						<!--===================================================-->
+						<!-- END OF BRAND LOGO & TEXT -->
 
-                <ul class="nav navbar-top-links pull-right">
+						<!-- NAVBAR DROPDOWN -->
+						<!--===================================================-->
+						<div class="navbar-content clearfix">
+							<ul class="nav navbar-top-links pull-left"></ul>
 
-                    <!-- USER DROPDOWN -->
-                    <!--===================================================-->
-                    <li id="dropdown-user" class="dropdown">
+							<ul class="nav navbar-top-links pull-right">
 
-                        <!-- Dropdown button -->
-                        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
-                        <span class="pull-right">
-                            <img src="../../assets/images/av1.png" name="Profile Picture" id="Profile Picture"
-                                 class="img-circle img-user media-object">
-                        </span>
+								<!-- USER DROPDOWN -->
+								<!--===================================================-->
+								<li id="dropdown-user" class="dropdown">
 
-                            <div class="username hidden-xs"><!--Obtener el nombre de usuario aqui--></div>
-                        </a>
-                        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+									<!-- Dropdown button -->
+									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+									<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right"> <span class="pull-right"> <img src="../../assets/images/av1.png" name="Profile Picture" id="Profile Picture"
+										class="img-circle img-user media-object"> </span>
+									<div class="username hidden-xs">
+										<!--Obtener el nombre de usuario aqui-->
+										<?php
+										echo $_SESSION["name"] . " " . $_SESSION["last_name"];
+										?>
+									</div> </a>
+									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                        <!-- Dropdown menu -->
-                        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+									<!-- Dropdown menu -->
+									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+									<div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
 
-                            <ul class="head-list">
+										<ul class="head-list">
 
-                                <!-- Dropdown list -->
-                                <li>
-                                    <a href="login/login.php">
-                                        <i class="fa fa-user fa-fw fa-lg"></i>
-                                        <span class="text-nowrap">Perfil</span>
-                                    </a>
-                                </li>
+											<!-- Dropdown list -->
+											<li>
+												<a href="login/login.php"> <i class="fa fa-user fa-fw fa-lg"></i> <span class="text-nowrap">Perfil</span> </a>
+											</li>
 
-                                <!-- Dropdown list -->
-                                <li>
-                                    <a href="login.php">
-                                        <i class="fa fa-sign-out fa-fw fa-lg"></i>
-                                        <span>Salir</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+											<!-- Dropdown list -->
+											<li>
+												<a href="login.php"> <i class="fa fa-sign-out fa-fw fa-lg"></i> <span>Salir</span> </a>
+											</li>
+										</ul>
+									</div>
+									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    </li>
-                    <!-- END OF USER DROPDOWN -->
-                    <!--===================================================-->
+								</li>
+								<!-- END OF USER DROPDOWN -->
+								<!--===================================================-->
 
-                </ul>
-            </div>
-            <!--===================================================-->
-            <!-- END OF NAVBAR DROPDOWN -->
+							</ul>
+						</div>
+						<!--===================================================-->
+						<!-- END OF NAVBAR DROPDOWN -->
 
-        </div>
-    </header>
-    <!--===================================================-->
-    <!-- END OF NAVBAR -->
+					</div>
+				</header>
+				<!--===================================================-->
+				<!-- END OF NAVBAR -->
 
-    <!-- CONTENT -->
-    <!--===================================================-->
-    <div class="boxed">
-        <!-- CONTENT CONTAINER -->
-        <!--===================================================-->
-        <div id="content-container">
+				<!-- CONTENT -->
+				<!--===================================================-->
+				<div class="boxed">
+					<!-- CONTENT CONTAINER -->
+					<!--===================================================-->
+					<div id="content-container">
 
-            <form action="../controller/modificarAlumno.php" method="post" onsubmit="sendRequest();
-                return false" class="col-xs-4">
-    
-            <h1>Registro</h1>
-        <div class="form-group " >
-            <label>Nombre:</label>
-            <input name="nom"  type="text" class="form-control" required/>
-           </div>
-            
-        <div class="form-group " >
-            <label>Apellido:</label>
-            <input name="ap"  type="text"  class="form-control" required/>
-            </div>
-            
-        <div class="form-group " >
-            <label>Mail:</label>
-            <input name="mail"  type="email" class="form-control" required/>
-            </div>
-            
-       <div class="form-group " >
-            <label>Carrera:</label></td>
-            <input name="carrera"  type="text" class="form-control" required/>
-        </div>
-        
-        <div class="form-group " >
-                <label>Genero:</label></td>
-            <SELECT name="sex"  required>
-                    <option value="hombre">hombre</option>
-                    <option value="mujer">mujer</option>
-                </SELECT>
-       </div>
-       
-       <div class="form-group " >
-       <label>Latitud:</label>
-            <input name="lat" type="number" step="any" class="form-control" required/>
-        </div>
-        
-        <div class="form-group " >
-            <label>Longitud:</label>
-            <input name="long"  type="number" step="any" class="form-control" required/>
-        </div>
-        
-        <div class="form-group " >
-            <label>Contrasena:</label>
-            <input name="pass"  type="password" class="form-control" required/>
-       </div>
-       
-       <input type="submit" value="Aceptar" name="btnEnviar"/>
-            <input type="button" value="Salir" name="btnSalir" onclick="salir()"/>
-            
-</form>
-<div id="divStatus"></div>
+						<form action="../controller/modificarAlumno.php" method="post" onsubmit="sendRequest();
+						return false" class="col-xs-4">
 
-        </div>
-        <!--===================================================-->
-        <!-- END OF CONTENT CONTAINER -->
+							<h1>Registro</h1>
+							<div class="form-group " >
+								<label>Nombre:</label>
+								<input name="nom"  type="text" class="form-control" required/>
+							</div>
 
-         <!--SIDEBAR-->
-        <!--===================================================-->
+							<div class="form-group " >
+								<label>Apellido:</label>
+								<input name="ap"  type="text"  class="form-control" required/>
+							</div>
 
-        <nav id="mainnav-container" data-sm="mainnav-sm" data-all="mainnav-lg">
-            <div id="mainnav">
+							<div class="form-group " >
+								<label>Mail:</label>
+								<input name="mail"  type="email" class="form-control" required/>
+							</div>
 
-                <!-- MAIN NAVIGATION : MENU -->
-                <!--===================================================-->
-                <div id="mainnav-menu-wrap">
-                    <div class="nano has-scrollbar">
-                        <div class="nano-content" tabindex="0" style="right: -15px;">
-                            <ul id="mainnav-menu" class="list-group">
+							<div class="form-group " >
+								<label>Carrera:</label></td>
+								<input name="carrera"  type="text" class="form-control" required/>
+							</div>
 
-                                <!--Category name-->
-                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                <li class="list-header">Navegación</li>
+							<div class="form-group " >
+								<label>Genero:</label></td>
+								<SELECT name="sex"  required>
+									<option value="hombre">hombre</option>
+									<option value="mujer">mujer</option>
+								</SELECT>
+							</div>
 
-                                <!-- Menu list item -->
-                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                <li>
-                                    <a href="index.html">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span class="menu-title"><strong>Estadísticas</strong></span>
-                                    </a>
-                                </li>
+							<div class="form-group " >
+								<label>Latitud:</label>
+								<input name="lat" type="number" step="any" class="form-control" required/>
+							</div>
 
-                                <li class="list-divider"></li>
+							<div class="form-group " >
+								<label>Longitud:</label>
+								<input name="long"  type="number" step="any" class="form-control" required/>
+							</div>
 
-                                <!-- Category name -->
-                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                <li class="list-header">Otra Categoría</li>
+							<div class="form-group " >
+								<label>Contrasena:</label>
+								<input name="pass"  type="password" class="form-control" required/>
+							</div>
 
-                                <!-- Menu list item-->
-                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-briefcase"></i>
-                                        <span class="menu-title">UI Elements</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!--===================================================-->
-                <!-- END OF MAIN NAVIGATION : MENU -->
-            </div>
-        </nav>
-        <!--===================================================-->
-        <!-- END OF MAIN NAVIGATION -->
-        <!--===================================================-->
+							<input type="submit" value="Aceptar" name="btnEnviar"/>
+							<input type="button" value="Salir" name="btnSalir" onclick="salir()"/>
 
-        
+						</form>
+						<div id="divStatus"></div>
 
-    </div>
-    <!--===================================================-->
-    <!--END OF CONTENT -->
+					</div>
+					<!--===================================================-->
+					<!-- END OF CONTENT CONTAINER -->
 
-    <!-- FOOTER -->
-    <!--===================================================-->
-    <footer id="footer">
-        <!-- Visible when the footer is static position -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <!-- <div class="hide-fixed pull-right pad-rgt">
-            Made with <i class="fa fa-heart"></i> by <a class="text-primar    y" href="https://github.com/anuarml">Anuar
-            Morales</a>
-        </div>
+					<!--SIDEBAR-->
+					<!--===================================================-->
 
-        <p class="pad-lft">© 2015 Pizarra Virtual- UADY</p> -->
+					<nav id="mainnav-container" data-sm="mainnav-sm" data-all="mainnav-lg">
+						<div id="mainnav">
 
-    </footer>
-    <!--===================================================-->
-    <!-- END OF FOOTER -->
+							<!-- MAIN NAVIGATION : MENU -->
+							<!--===================================================-->
+							<div id="mainnav-menu-wrap">
+								<div class="nano has-scrollbar">
+									<div class="nano-content" tabindex="0" style="right: -15px;">
+										<ul id="mainnav-menu" class="list-group">
 
-    <!-- SCROLL TOP BUTTON -->
-    <!--===================================================-->
-    <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
-    <!--===================================================-->
-</div>
-<!--===================================================-->
-<!-- END OF CONTAINER -->
+											<!--Category name-->
+											<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+											<li class="list-header">
+												Navegación
+											</li>
 
-<!-- jQuery Version 2.1.4 -->
-<script src="../../assets/js/jquery.min.js" type="text/javascript"></script>
+											<!-- Menu list item -->
+											<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+											<li>
+												<a href="index.html"> <i class="fa fa-dashboard"></i> <span class="menu-title"><strong>Estadísticas</strong></span> </a>
+											</li>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
+											<li class="list-divider"></li>
 
-<!-- Admin Core -->
-<script src="../../assets/js/nifty.min.js" type="text/javascript"></script>
+											<!-- Category name -->
+											<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+											<li class="list-header">
+												Otra Categoría
+											</li>
 
-</body>
+											<!-- Menu list item-->
+											<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+											<li>
+												<a href="#"> <i class="fa fa-briefcase"></i> <span class="menu-title">UI Elements</span> </a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!--===================================================-->
+							<!-- END OF MAIN NAVIGATION : MENU -->
+						</div>
+					</nav>
+					<!--===================================================-->
+					<!-- END OF MAIN NAVIGATION -->
+					<!--===================================================-->
+
+				</div>
+				<!--===================================================-->
+				<!--END OF CONTENT -->
+
+				<!-- FOOTER -->
+				<!--===================================================-->
+				<footer id="footer">
+					<!-- Visible when the footer is static position -->
+					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+					<!-- <div class="hide-fixed pull-right pad-rgt">
+					Made with <i class="fa fa-heart"></i> by <a class="text-primar    y" href="https://github.com/anuarml">Anuar
+					Morales</a>
+					</div>
+
+					<p class="pad-lft">© 2015 Pizarra Virtual- UADY</p> -->
+
+				</footer>
+				<!--===================================================-->
+				<!-- END OF FOOTER -->
+
+				<!-- SCROLL TOP BUTTON -->
+				<!--===================================================-->
+				<button id="scroll-top" class="btn">
+					<i class="fa fa-chevron-up"></i>
+				</button>
+				<!--===================================================-->
+			</div>
+			<!--===================================================-->
+			<!-- END OF CONTAINER -->
+
+			<!-- jQuery Version 2.1.4 -->
+			<script src="../../assets/js/jquery.min.js" type="text/javascript"></script>
+
+			<!-- Bootstrap Core JavaScript -->
+			<script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+			<!-- Admin Core -->
+			<script src="../../assets/js/nifty.min.js" type="text/javascript"></script>
+
+		</body>
 </html>

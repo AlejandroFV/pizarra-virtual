@@ -11,7 +11,6 @@
     
     <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../assets/js/chat.js"></script>
-    <script type="text/javascript" src="../controller/history.php"></script>
     <script type="text/javascript">
     
         var name = prompt("Usuario:", "Invitado");

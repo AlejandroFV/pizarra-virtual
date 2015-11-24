@@ -36,6 +36,7 @@ function getStateOfChat(){
 function updateChat(){
     if(!instanse){
         instanse = true;
+        
         var datos = {
             function : 'update',
             state : state,

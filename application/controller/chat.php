@@ -36,6 +36,7 @@ switch($function) {
         $room = $_POST['room'];
         $sql = "SELECT * FROM `messege` AS Messege WHERE Messege.`group`=$room";
         if($result = mysqli_query($oLink,$sql)){
+            $text = array();
             while ($fila = mysqli_fetch_assoc($result)) {
                 $text[] = "<span>" . $fila["user"] . "</span>" .$fila["messege"];
             }
@@ -51,12 +52,16 @@ switch($function) {
         $sql = "SELECT * FROM `messege` AS Messege WHERE Messege.`group`=$room";
         if($result = mysqli_query($oLink,$sql)){
             $count = mysqli_affected_rows($oLink);
-
+            
             if($state == $count){
                 $log['state'] = $state;
                 $log['text'] = false;
-                while ($fila = mysqli_fetch_assoc($result)) {
-                    $log['lastId'] = $fila["id"];
+                if($count == 0)
+                    $log['lastId'] = $_POST['lastId'];
+                else{
+                    while ($fila = mysqli_fetch_assoc($result)) {
+                        $log['lastId'] = $fila["id"];
+                    }
                 }
             }
             else{

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2015 a las 03:05:49
--- Versión del servidor: 5.6.17
--- Versión de PHP: 5.5.12
+-- Tiempo de generación: 24-11-2015 a las 15:24:17
+-- Versión del servidor: 5.6.20
+-- Versión de PHP: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,8 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `equations` (
   `equation` varchar(45) NOT NULL,
-  `answer` varchar(45) NOT NULL,
-  PRIMARY KEY (`equation`)
+  `answer` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -49,14 +48,29 @@ INSERT INTO `equations` (`equation`, `answer`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `given_answers` (
-  `id_answer` int(11) NOT NULL AUTO_INCREMENT,
+`id_answer` int(11) NOT NULL,
   `equation` varchar(45) NOT NULL,
   `user` varchar(255) NOT NULL,
-  `answer` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_answer`),
-  KEY `producto_notable_idx` (`equation`),
-  KEY `usuario_idx` (`user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  `answer` varchar(45) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+
+--
+-- Volcado de datos para la tabla `given_answers`
+--
+
+INSERT INTO `given_answers` (`id_answer`, `equation`, `user`, `answer`) VALUES
+(8, '(x+1)^2', '001', 'x^2+2x+1'),
+(9, '(x+2)^2', '001', 'x^2+4x+4'),
+(10, '(x+3)^2', '001', 'x^2+6x+9'),
+(11, '(x+4)^2', '001', 'x^2+8x+8'),
+(12, '(x+1)^2', '001', 'x^2+2x+1'),
+(13, '(x+2)^2', '001', 'x^2+4x+4'),
+(14, '(x+3)^2', '001', 'x^2+6x+9'),
+(15, '(x+4)^2', '001', 'x^2+8x+8'),
+(16, '(x+1)^2', '001', 'x^2+2x+1'),
+(17, '(x+2)^2', '001', 'x^2+4x+4'),
+(18, '(x+3)^2', '001', 'x^2+6x+9'),
+(19, '(x+4)^2', '001', 'x^2+8x+8');
 
 -- --------------------------------------------------------
 
@@ -68,8 +82,7 @@ CREATE TABLE IF NOT EXISTS `likely_answers` (
   `equation` varchar(45) NOT NULL,
   `likely_answer` varchar(45) NOT NULL,
   `message` varchar(45) NOT NULL,
-  `count` int(11) NOT NULL,
-  KEY `producto_notable_idx` (`equation`)
+  `count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -80,8 +93,21 @@ INSERT INTO `likely_answers` (`equation`, `likely_answer`, `message`, `count`) V
 ('(x+1)^2', '', '', 0),
 ('(x+2)^2', 'x^2+2x+4', 'Checa el 2do termino', 0),
 ('(x+3)^2', 'x^2+2x+4', 'Esta mal', 0),
-('(x+4)^2', 'x^2+8x+8', 'Esta mal', 1),
-('(x+4)^2', 'x^2+8x+8', 'Esta mal', 1);
+('(x+4)^2', 'x^2+8x+8', 'Esta mal', 4),
+('(x+4)^2', 'x^2+8x+8', 'Esta mal', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `messege`
+--
+
+CREATE TABLE IF NOT EXISTS `messege` (
+`id` int(10) unsigned NOT NULL,
+  `user` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `messege` text COLLATE utf8_unicode_ci NOT NULL,
+  `group` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -94,10 +120,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `specialty` varchar(255) NOT NULL,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
-  `group` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_user`),
-  KEY `id_user` (`id_user`),
-  KEY `id_user_2` (`id_user`)
+  `group` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -115,13 +138,12 @@ INSERT INTO `student` (`id_user`, `specialty`, `latitude`, `longitude`, `group`)
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_file_uploads` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `file` varchar(100) NOT NULL,
   `type` varchar(10) NOT NULL,
   `size` int(11) NOT NULL,
-  `workgroup` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `workgroup` int(11) NOT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -136,8 +158,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -151,6 +172,71 @@ INSERT INTO `user` (`id`, `password`, `name`, `last_name`, `email`, `gender`, `r
 ('456', 'hola', 'tutor', 'tutor', 'tutor@gmail.com', 'mujer', 'tutor');
 
 --
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `equations`
+--
+ALTER TABLE `equations`
+ ADD PRIMARY KEY (`equation`);
+
+--
+-- Indices de la tabla `given_answers`
+--
+ALTER TABLE `given_answers`
+ ADD PRIMARY KEY (`id_answer`), ADD KEY `producto_notable_idx` (`equation`), ADD KEY `usuario_idx` (`user`);
+
+--
+-- Indices de la tabla `likely_answers`
+--
+ALTER TABLE `likely_answers`
+ ADD KEY `producto_notable_idx` (`equation`);
+
+--
+-- Indices de la tabla `messege`
+--
+ALTER TABLE `messege`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `student`
+--
+ALTER TABLE `student`
+ ADD PRIMARY KEY (`id_user`), ADD KEY `id_user` (`id_user`), ADD KEY `id_user_2` (`id_user`);
+
+--
+-- Indices de la tabla `tbl_file_uploads`
+--
+ALTER TABLE `tbl_file_uploads`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `given_answers`
+--
+ALTER TABLE `given_answers`
+MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT de la tabla `messege`
+--
+ALTER TABLE `messege`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_file_uploads`
+--
+ALTER TABLE `tbl_file_uploads`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -158,20 +244,20 @@ INSERT INTO `user` (`id`, `password`, `name`, `last_name`, `email`, `gender`, `r
 -- Filtros para la tabla `given_answers`
 --
 ALTER TABLE `given_answers`
-  ADD CONSTRAINT `fk_equation` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_user` FOREIGN KEY (`user`) REFERENCES `student` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_equation` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_user` FOREIGN KEY (`user`) REFERENCES `student` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `likely_answers`
 --
 ALTER TABLE `likely_answers`
-  ADD CONSTRAINT `fk_eq` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_eq` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `fk_id_user_student_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
+ADD CONSTRAINT `fk_id_user_student_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -23,7 +23,7 @@
     <link href="../../assets/css/app.css" rel="stylesheet">
     
     <!-- Graph css -->
-    <link rel="stylesheet" href="../../assets/js/graph/jquery.jqplot.css">
+    <link rel="stylesheet" href="../js/jquery.jqplot.css">
 
     <script src="../../assets/js/pace.min.js" type="text/javascript"></script>
 
@@ -37,16 +37,16 @@
     <script src="../../assets/js/nifty.min.js" type="text/javascript"></script>
 
     <!-- Graph plugins -->
-    <script src="../../assets/js/graph/jquery.jqplot.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.jqplot.min.js" type="text/javascript"></script>
     
     
 
-    <script src="../../assets/js/graph/plugins/jqplot.barRenderer.js"></script>
-    <script src="../../assets/js/graph/plugins/jqplot.pieRenderer.js"></script>
-    <script src="../../assets/js/graph/plugins/jqplot.categoryAxisRenderer.js"></script>
-    <script src="../../assets/js/graph/plugins/jqplot.pointLabels.js"></script>
+    <script src="../js/plugins/jqplot.barRenderer.js"></script>
+    <script src="../js/plugins/jqplot.pieRenderer.js"></script>
+    <script src="../js/plugins/jqplot.categoryAxisRenderer.js"></script>
+    <script src="../js/plugins/jqplot.pointLabels.js"></script>
 
-    <script src="../../assets/js/graph.js" type="text/javascript"></script>
+    <script src="../js/graph.js" type="text/javascript"></script>
     
     <script>
         $(function(){
@@ -79,7 +79,7 @@
         }
     </style>
 
-<body class=" nifty-ready pace-done">
+<body class="nifty-ready pace-done">
 <!-- Page Loader -->
 <div class="pace pace-inactive">
     <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
@@ -283,12 +283,5 @@
 <!--===================================================-->
 <!-- END OF CONTAINER -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-  <script>
-    $.getJSON('data.php', function(data) {
-      $.each(data, function(fieldName, fieldValue) {
-        $("#" + fieldName).val(fieldValue);
-      });
-    });
-  </script>
 </body>
 </html>

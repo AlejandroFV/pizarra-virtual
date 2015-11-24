@@ -1,9 +1,16 @@
+<?php
+session_start();
+if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
+	header('Location: login.php');
+}
+?>
 <html lang="en" class=" overthrow-enabled">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
 		<title>Gestion Alumnos</title>
 		<link rel="stylesheet" type="text/css" href="../../assets/css/proyecto.css">
 		<script type="text/javascript" src="../../assets/js/zxml.js"></script>
+		<script type="text/javascript" src="../../assets/js/jquery.js"></script>
 		<script type="text/javascript">
 			var realizar = 1;
 
@@ -44,6 +51,12 @@
 
 				var divStatus = document.getElementById("divStatus");
 				divStatus.innerHTML = sMensaje;
+				$('#myModal').modal('show'); 
+				// if (sMensaje="Alumno Agregado") {
+					// var formulario = document.getElementById("formulario");
+					// formulario.reset();
+				// };
+				
 
 			}
 
@@ -184,7 +197,7 @@
 					<!--===================================================-->
 					<div id="content-container">
 						<form action="../controller/altaAlumno.php" method="post" onsubmit="sendRequest();
-						return false" class="col-xs-4">
+						return false" class="col-xs-4" id="formulario">
 
 							<h1>Registro de alumno</h1>
 
@@ -245,7 +258,7 @@
 							<input type="button" value="Salir" name="btnSalir" onclick="salir()" class="btn btn-default"/>
 
 						</form>
-						<div id="divStatus"></div>
+						<div></div>
 						<!--========================AQUI VA TODOOO===========================-->
 
 					</div>
@@ -318,6 +331,20 @@
 					<i class="fa fa-chevron-up"></i>
 				</button>
 				<!--===================================================-->
+				
+				<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div id="divStatus" class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 			</div>
 			<!--===================================================-->
 			<!-- END OF CONTAINER -->

@@ -31,6 +31,7 @@ $_SESSION["role"] = "";
     
     <link rel="stylesheet" type="text/css" href="../../assets/css/proyecto.css">
     <script type="text/javascript" src="../../assets/js/zxml.js"></script>
+    <script type="text/javascript" src="../../assets/js/jquery.js"></script>
     
     <script type="text/javascript">
 
@@ -79,6 +80,7 @@ $_SESSION["role"] = "";
                 default :
                     var divStatus = document.getElementById("divStatus");
                     divStatus.innerHTML = sMensaje;
+                    $('#myModal').modal('show'); 
             }
         }
     </script>
@@ -217,7 +219,13 @@ $_SESSION["role"] = "";
      
             <td><input type="submit" value="Entrar" class="btn btn-default"/></td>
 </form>
-<div id="divStatus"></div>
+<div ></div>
+ <!-- Modal -->
+  
+
+
+</body>
+</html>
 
         </div>
         <!--===================================================-->
@@ -301,6 +309,20 @@ $_SESSION["role"] = "";
     <!--===================================================-->
     <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
     <!--===================================================-->
+    
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div id="divStatus" class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!--===================================================-->
 <!-- END OF CONTAINER -->

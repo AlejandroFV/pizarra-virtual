@@ -10,6 +10,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'administrador') {
 		<title>Registrar Tutor</title>
 
 		<script type="text/javascript" src="../../assets/js/zxml.js"></script>
+		<script type="text/javascript" src="../../assets/js/jquery.js"></script>
 		<script type="text/javascript">
 			var realizar = 1;
 
@@ -50,6 +51,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'administrador') {
 
 				var divStatus = document.getElementById("divStatus");
 				divStatus.innerHTML = sMensaje;
+				$('#myModal').modal('show'); 
 
 			}
 
@@ -231,7 +233,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'administrador') {
 							<input type="button" value="Salir" name="btnSalir"  class="btn btn-default" onclick="salir()"/>
 
 						</form>
-						<div id="divStatus"></div>
+						<div></div>
 						<!--========================AQUI VA TODOOO===========================-->
 
 					</div>
@@ -313,6 +315,22 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'administrador') {
 				<button id="scroll-top" class="btn">
 					<i class="fa fa-chevron-up"></i>
 				</button>
+				
+				
+				<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div id="divStatus" class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+			</div>
 				<!--===================================================-->
 			</div>
 			<!--===================================================-->

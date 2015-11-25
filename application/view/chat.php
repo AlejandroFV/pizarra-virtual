@@ -1,3 +1,10 @@
+ <?php
+session_start();
+if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
+    header('Location: login.php');
+	error_reporting(0);
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -13,13 +20,15 @@
     <script type="text/javascript" src="../../assets/js/chat.js"></script>
     <script type="text/javascript">
     
-        var name = prompt("Usuario:", "Invitado");
+        /*var name = prompt("Usuario:", "Invitado");
         
         // Nickname por default: Guest
     	if (!name || name === ' ') {
     	   name = "Invitado";	
-    	}
+    	}*/
     	
+        var name = <?php echo json_encode($_SESSION["name"]); ?>;
+        
     	// Eliminacion de basura
     	name = name.replace(/(<([^>]+)>)/ig,"");
         

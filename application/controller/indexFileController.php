@@ -14,7 +14,7 @@ include_once 'conexion_bd.php';
 
          $row = mysqli_fetch_assoc(mysqli_query($oLink, $sqlSelectGroup));
          $grupo=$row["group"];
-         $sql = "SELECT * FROM tbl_file_uploads where id='$grupo'";
+         $sql = "SELECT * FROM tbl_file_uploads where workgroup='$grupo'";
 
      }
      $query = mysqli_query($oLink,$sql);

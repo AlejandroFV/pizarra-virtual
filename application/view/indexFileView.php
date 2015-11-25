@@ -255,7 +255,7 @@ if ($_SESSION["valida"] == true   ) {
                     <td><?php echo $row['type'] ?></td>
                     <td><?php echo $row['size'] ?> kb</td>
                     <td>
-                        <input type="text" name="id" value="<?php echo $row['id'] ?>" />
+                        <input type="text" name="id" value="<?php echo $row['workgroup'] ?>" readonly />
 
                     </td>
                     <td><a onclick="visualizar(<?php echo $row['id']?>);return false;" href="" target="">Visualizar</a></td>

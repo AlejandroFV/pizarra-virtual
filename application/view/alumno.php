@@ -278,7 +278,7 @@ $equations_size = sizeof($equations);
                     <div class="nano has-scrollbar">
                         <div class="nano-content" tabindex="0" style="right: -15px;">
                             <ul id="mainnav-menu" class="list-group">
-
+                               
                                 <?php
                                 if ($_SESSION["role"] == 'tutor') {
                                     echo '<li class="dropdown">
@@ -302,7 +302,6 @@ $equations_size = sizeof($equations);
     <li><a href="#">Modificar datos</a></li>
     <li><a href="#">Eliminar cuenta</a></li>
     <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
   </ul>
 </li>
                                 <li class="dropdown">
@@ -311,7 +310,7 @@ $equations_size = sizeof($equations);
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="#"></a></li>
+    <li><a href="indexFileView.php"><strong>Ver documentos</strong></a></span> <span class="menu-title"></a></li>
     <li><a href="#"></a></li>
     <li><a href="#"></a></li>
     <li><a href="#"></a></li>

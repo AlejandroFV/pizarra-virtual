@@ -278,7 +278,7 @@ if ($_SESSION["valida"] == true   ) {
 
 <!-- ESTO QUITE MEDIAFILE       <a href="addFileView.php">Subir más archivos</a><br><br>-->
 
-    <div id="mediaDiv">
+    <div align="center" id="mediaDiv">
 
     </div>
     

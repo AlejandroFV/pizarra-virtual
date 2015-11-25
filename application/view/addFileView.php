@@ -111,14 +111,17 @@ session_start();
             case 'exito':
                 var divStatus = document.getElementById("divStatus");
                 divStatus.innerHTML = "<label>El archivo se ha subido sin problemas</label>";
+                $('#myModal').modal('show'); 
                 break;
             case 'error':
                 var divStatus = document.getElementById("divStatus");
                 divStatus.innerHTML = "<label>Error al subir archivo</label>";
+                 $('#myModal').modal('show'); 
                 break;
             default :
                 var divStatus = document.getElementById("divStatus");
                 divStatus.innerHTML = sMensaje;
+                 $('#myModal').modal('show'); 
         }
     }
 </script>
@@ -259,7 +262,7 @@ session_start();
 	</form>
 
     <br><br><br>
-<div id="divStatus"></div>
+
 </div>
 
 <!--	<a href="indexFileView.php">Ir a la Vista</a>-->
@@ -384,12 +387,28 @@ session_start();
         <p class="pad-lft">© 2015 Pizarra Virtual- UADY</p> -->
 
     </footer>
+    
+    
     <!--===================================================-->
     <!-- END OF FOOTER -->
 
     <!-- SCROLL TOP BUTTON -->
     <!--===================================================-->
     <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+    
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div id="divStatus" class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!--===================================================-->
 </div>
 <!--===================================================-->

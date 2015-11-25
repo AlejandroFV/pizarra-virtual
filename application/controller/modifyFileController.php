@@ -1,10 +1,18 @@
 <?php
 include_once 'conexion_bd.php';
 
+
     if(isset($_POST['delete']) ){
     	$id = $_POST['id'];
-        $sqldel = "DELETE FROM `archivos_ajax`.`tbl_file_uploads` WHERE `tbl_file_uploads`.`id` = $id";
+        $sqldel = "DELETE FROM `tbl_file_uploads` WHERE `id` = $id";
         mysqli_query($oLink,$sqldel);
+
+        $sqlSelectFile= "SELECT * FROM tbl_file_uploads where ='$id'";
+        $row = mysqli_fetch_assoc(mysqli_query($oLink, $sqlSelectFile));
+        $folder = "../../assets/uploads/";
+        $file=$row["file"];
+        $ext=$row["type"];
+        unlink($folder.$file.".".$ext);
 
         header('location: ../view/indexFileView.php');
 

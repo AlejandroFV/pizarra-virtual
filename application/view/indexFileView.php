@@ -255,7 +255,7 @@ if ($_SESSION["valida"] == true   ) {
                     <td><?php echo $row['type'] ?></td>
                     <td><?php echo $row['size'] ?> kb</td>
                     <td>
-                        <input type="text" name="id" value="<?php echo $row['workgroup'] ?>" readonly />
+                        <input type="text" name="id" value="<?php echo $row['workgroup'] ?>"  <?php if($role == 'alumno'){echo "readonly";}?>/>
 
                     </td>
                     <td><a onclick="visualizar(<?php echo $row['id']?>);return false;" href="" target="">Visualizar</a></td>
@@ -424,7 +424,7 @@ if ($_SESSION["valida"] == true   ) {
 <script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!-- Admin Core -->
-<script src="../../assets/js/nifty.min.js" type="text/javascript"></script>
+<!-- <script src="../../assets/js/nifty.min.js" type="text/javascript"></script> -->
 
 </body>
 </html>

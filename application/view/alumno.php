@@ -102,20 +102,20 @@ $equations_size = sizeof($equations);
         var name = <?php echo json_encode($_SESSION["name"]); ?>;
         
     	// Eliminacion de basura
-    	name = name.replace(/(<([^>]+)>)/ig,"");
-        
-        var group = prompt("Grupo:", 1);
-        
-        // Nickname por default: Guest
-    	if (!group || group === ' ') {
-    	   group = 1;	
-    	}
-    	
-    	// Eliminacion de basura
-    	group = group.replace(/(<([^>]+)>)/ig,"");
+    	// name = name.replace(/(<([^>]+)>)/ig,"");
+//         
+        // var group = prompt("Grupo:", 1);
+//         
+        // // Nickname por default: Guest
+    	// if (!group || group === ' ') {
+    	   // group = 1;	
+    	// }
+//     	
+    	// // Eliminacion de basura
+    	// group = group.replace(/(<([^>]+)>)/ig,"");
     	
     	// Inicio de chat
-        var chat =  new Chat(group);
+        var chat =  new Chat(<?php echo json_encode($_SESSION["id"]); ?>);
     	$(function() {
     	
     		 chat.getState(); 

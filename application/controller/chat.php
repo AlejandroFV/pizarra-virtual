@@ -32,6 +32,25 @@ switch($function) {
         }
         break;
 
+    case('getGroup'):
+        $user = $_POST['user'];
+        $sql = "SELECT * FROM `student` AS Student WHERE Student.`id_user`=$user";
+        if($result = mysqli_query($oLink,$sql)){
+            $count = mysqli_affected_rows($oLink);
+
+            if($count>0){
+                while ($fila = mysqli_fetch_assoc($result)) {
+                    $log['group'] = $fila["group"];
+                }
+            }else{
+                echo "ERROR: ESTE USUARIO NO ESTA EN UN GRUPO";
+            }
+        }else{
+            echo "ERROR: " . mysqli_error($oLink);
+        }
+
+        break;
+
     case('history'):
         $room = $_POST['room'];
         $sql = "SELECT * FROM `messege` AS Messege WHERE Messege.`group`=$room";
@@ -52,7 +71,7 @@ switch($function) {
         $sql = "SELECT * FROM `messege` AS Messege WHERE Messege.`group`=$room";
         if($result = mysqli_query($oLink,$sql)){
             $count = mysqli_affected_rows($oLink);
-            
+
             if($state == $count){
                 $log['state'] = $state;
                 $log['text'] = false;

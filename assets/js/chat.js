@@ -3,12 +3,26 @@ var group;
 var state;
 var lastId = 0;
 
-function Chat (g) {
+function Chat (user) {
     this.update = updateChat;
     this.send = sendChat;
     this.getState = getStateOfChat;
     this.history= historyChat;
-    group = g;
+
+    var datos = {
+        function : 'getGroup',
+        user: user,
+    };
+    $.ajax({
+        type: "POST",
+        url: "../../application/controller/chat.php",
+        data: datos,
+        dataType: "json",
+        success: function(data){
+            group = data.group;
+        },
+    });
+    alert("Conexión establecida.");
 }
 
 //Obtiene el estado del chat
@@ -36,7 +50,7 @@ function getStateOfChat(){
 function updateChat(){
     if(!instanse){
         instanse = true;
-        
+
         var datos = {
             function : 'update',
             state : state,

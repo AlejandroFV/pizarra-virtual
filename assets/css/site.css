@@ -8,7 +8,7 @@
     margin-bottom: 100px;
     margin-right: 2em;
     background: url("../images/board.jpg");
-    background-size: contain;
+    background-size: 100% 100%;
     color: white;
     border: 4px solid #C9916E;
     border-bottom: none;

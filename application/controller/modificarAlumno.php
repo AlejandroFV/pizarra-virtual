@@ -30,7 +30,7 @@ if (mysqli_affected_rows($oLink) == 0) {
     //ESTE UPDATE NO ESTA FUNCIONANDO SOLO ACTUALIZA LA TABLA USER PERO NO LA TABLA STUDENT
     $sql2 = "Update `student` Set `id_user`='$_SESSION[id]', `specialty`='$specialty', `latitude`='$latitude', `longitude`='$longitude' Where id_user = " . $_SESSION["id"];
     $sql3 = "Update `user` Set `password`='$password', `name`='$name', `last_name`='$last_name', `email`='$email', `gender`='$gender', `role`='alumno' Where id = " . $_SESSION["id"];
-    if ($status == "") {
+    if ($status != "") {
         if ($oResult1 = mysqli_query($oLink, $sql3)) {
             if ($oResult2 = mysqli_query($oLink, $sql2)) {
                 $status = "Cambios Realizados";

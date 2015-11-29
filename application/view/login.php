@@ -334,7 +334,6 @@ $_SESSION["role"] = "";
 <script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!-- Admin Core -->
-<script src="../../assets/js/nifty.min.js" type="text/javascript"></script>
-
+<!-- <script src="../../assets/js/nifty.min.js" type="text/javascript"></script> -->
 </body>
 </html>

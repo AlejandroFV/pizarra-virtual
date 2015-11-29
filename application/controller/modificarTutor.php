@@ -24,13 +24,13 @@ if (mysqli_affected_rows($oLink) == 0) {
     $status = "No existe el Tutor a modificar";
 } else {
     $sql2 = "Update `user` Set `password`='$password', `name`='$name', `last_name`='$last_name', `email`='$email', `gender`='$gender', `role`='tutor' Where id = " . $_SESSION["id"];
-    if ($status == "") {
+  
         if ($oResult = mysqli_query($oLink, $sql2)) {
             $status = "Cambios Realizados";
         } else {
             $status = "Ocurrió un error al realizar los cambio, los datos no fueron modificados";
         }
-    }
+    
     mysqli_close($oLink);
 }
 echo $status;

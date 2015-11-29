@@ -472,13 +472,13 @@ $equations_size = sizeof($equations);
 <!-- END OF CONTAINER -->
 
 <!-- jQuery Version 2.1.4 -->
-<script src="../../assets/js/jquery.min.js" type="text/javascript"></script>
+<!-- <script src="../../assets/js/jquery.min.js" type="text/javascript"></script> -->
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!-- Admin Core -->
-<script src="../../assets/js/nifty.min.js" type="text/javascript"></script>
+<!-- <script src="../../assets/js/nifty.min.js" type="text/javascript"></script> -->
 
 </body>
 </html>

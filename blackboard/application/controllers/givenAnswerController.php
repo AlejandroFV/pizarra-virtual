@@ -17,13 +17,13 @@ class GivenAnswerController
   public function createGivenAnswer($equation, $user_id,  $answer)
   {
     $givenAnswer = $this->getGivenAnswer($equation, $user_id);
-    if ($givenAnswer === null) {
+    if ($givenAnswer == null) {
       $result = $this->givenAnswerDao->createGivenAnswer($equation, $user_id, $answer);
       if ($result == false) {
         return false;
       }
     } else {
-      $result = $this->givenAnswerDao->updateGivenAnswer($equation, $user_id, $givenAnswer->getAttempt() + 1);
+      $result = $this->givenAnswerDao->updateGivenAnswer($equation, $user_id, $answer, $givenAnswer->getAttempt() + 1);
       if ($result == false) {
         return false;
       }

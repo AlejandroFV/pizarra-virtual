@@ -8,7 +8,7 @@ session_start();
 $messages = "";
 $attempt = $_POST['attempts'];
 if ($equations !== null and isset($_SESSION['matricula'])) {
-  $i = 1;
+  $i = 0;
   $givenAnswerController = new GivenAnswerController();
   $error = false;
   foreach ($equations as $equation) {

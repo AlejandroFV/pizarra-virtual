@@ -15,6 +15,8 @@ if (isset($_GET['equation'])) {
     $likelyAnswer = $_GET['answer' . $i];
     $likelyMessage = $_GET['message' . $i];
     
+    $likelyAnswer = trim($likelyAnswer);
+    $likelyAnswer = str_replace(' ', '', $likelyAnswer);
     $likelyAnswerController = new LikelyAnswerController();
     $likelyAnswerObject = $likelyAnswerController->createLikelyAnswer($equation, $likelyAnswer, $likelyMessage);
     if ($likelyAnswerObject !== null) {

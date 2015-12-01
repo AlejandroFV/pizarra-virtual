@@ -7,6 +7,27 @@ $equations = $equationController->getEquations();
 session_start();
 $messages = "";
 $attempt = $_POST['attempts'];
+function normalizeEquation($eq)
+{
+  $eq = str_replace('a', 'x', $eq);
+  $eq = str_replace('i', 'x', $eq);
+  $eq = str_replace('m', 'x', $eq);
+
+  $eq = str_replace('b', 'y', $eq);
+  $eq = str_replace('j', 'y', $eq);
+  $eq = str_replace('n', 'y', $eq);
+
+  $eq = str_replace('c', 'z', $eq);
+  $eq = str_replace('k', 'z', $eq);
+  $eq = str_replace('o', 'z', $eq);
+
+  $eq = str_replace('d', 'w', $eq);
+  $eq = str_replace('l', 'w', $eq);
+  $eq = str_replace('p', 'w', $eq);
+  
+  return $eq;
+}
+
 if ($equations !== null and isset($_SESSION['matricula'])) {
   $i = 0;
   $givenAnswerController = new GivenAnswerController();
@@ -22,6 +43,10 @@ if ($equations !== null and isset($_SESSION['matricula'])) {
       $likelyAnswerController = new LikelyAnswerController();
       $likelyAnswer = $likelyAnswerController->getLikelyAnswer($equation->getEquation(), $answer);
       if ($likelyAnswer === null) {
+        // TODO pass equation in terms of x, y, z, w
+        $str_equation = normalizeEquation($equation->getEquation());
+        $likelyAnswerController->createLikelyAnswer($str_equation, $answer, 'Revisa tu resultado');
+        $likelyAnswerController->updateLikelyAnswer($equation->getEquation(),$answer, 'Revisa tu resultado', 1);
         $messages .= '<strong class="error"><i class="fa fa-exclamation"></i></strong>Revisa tu resultado@';
       } else {
         $likelyAnswerController->updateLikelyAnswer($equation->getEquation(),$answer, $likelyAnswer->getMessage(), ($likelyAnswer->getCount()+1));

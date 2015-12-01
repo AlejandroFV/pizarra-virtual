@@ -1,5 +1,5 @@
 <?php
-require_once('../controllers/equationController.php');
+require_once('../controller/equationController.php');
 $equationController = new EquationController();
 $equations = $equationController->getAllEquations();
 
@@ -42,4 +42,4 @@ foreach ($ids['ungrouped'] as $ungrouped) {
   }
 }
 
-header('location: ../views/assignEquations.php');
+header('location: ../view/assignEquations.php');

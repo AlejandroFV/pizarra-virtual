@@ -6,10 +6,11 @@ $equationController = new EquationController();
 $equations = $equationController->getEquations();
 session_start();
 $messages = "";
-
+$attempt = $_POST['attempts'];
 if ($equations !== null and isset($_SESSION['id'])) {
-  $i = 0;
+  $i = 1;
   $givenAnswerController = new GivenAnswerController();
+  $error = false;
   foreach ($equations as $equation) {
     $answer = $_POST['answer' . $i];
     $answer = str_replace(' ', '', $answer);
@@ -17,7 +18,7 @@ if ($equations !== null and isset($_SESSION['id'])) {
     $correct = strcasecmp($answer, $equation->getAnswer());
     if ($correct == 0) {
       $messages .= '<strong class="correct"><i class="fa fa-check"></i></strong>Respuesta correcta@';
-    } else {
+    } else if ($attempt < 3) {
       $likelyAnswerController = new LikelyAnswerController();
       $likelyAnswer = $likelyAnswerController->getLikelyAnswer($equation->getEquation(), $answer);
       if ($likelyAnswer === null) {
@@ -26,8 +27,15 @@ if ($equations !== null and isset($_SESSION['id'])) {
         $likelyAnswerController->updateLikelyAnswer($equation->getEquation(),$answer, $likelyAnswer->getMessage(), ($likelyAnswer->getCount()+1));
         $messages .= '<strong class="error"><i class="fa fa-exclamation"></i></strong>' . $likelyAnswer->getMessage() . '@';
       }
+      $error = true;
+    } else {
+      $messages .= '<strong class="error"><i class="fa fa-check"></i></strong>' . $equation->getAnswer() . '@';
+      $error = true;
     }
     $i++;
   }
+  if ($error) {
+    $attempt++;
+  }
 }
-echo ($messages !== "")? $messages : "An error ocurred";
+echo ($messages !== "")? $attempt . "@" . $messages : "An error ocurred";

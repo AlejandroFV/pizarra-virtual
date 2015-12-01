@@ -4,8 +4,8 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
     header('Location: login.php');
 	error_reporting(0);
 }
-
-error_reporting(E_ALL);
+error_reporting(0);
+//error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once('../controller/equationController.php');
 $equationController = new EquationController();
@@ -54,9 +54,21 @@ $equations_size = sizeof($equations);
   <link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="../../assets/js/jquery.js"></script>
   <script type="text/javascript">
+    attempt = 1;
+    
+    $(document).ready(function () {
+      $("#attempts").val(attempt);
+    });
+    
     function sendRequest() {
       $.post("../controller/validator.php", $('#equations-form').serialize()).done(function (data) {
         data = data.split("@");
+        attempt = data[0];
+        data.shift();
+        $("#attempts").val(attempt);
+        if (parseInt(attempt) > 3) {
+          $("#send").remove();
+        }
         displayResult(data);
       });
     }
@@ -314,7 +326,6 @@ $equations_size = sizeof($equations);
                 <label><?php echo $equation->getEquation(); ?> = </label>
                 <input type="text" class="answers" name="answer<?php echo $i; ?>">
 
-                <!-- TODO validate result --> 
                 <p id="answer<?php echo $i; ?>" class="checked"></p>
               </li>
             <?php
@@ -324,6 +335,7 @@ $equations_size = sizeof($equations);
           ?>
         </ol>
       </div>
+      <input type="hidden" name="attempts" id="attempts">
       <button id="send"><i class="fa fa-chevron-circle-up"></i> Enviar</button>
     </form>
   </div>

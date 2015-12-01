@@ -1,42 +1,15 @@
 <?php
-require_once('../controller/equationController.php');
-require_once('../controller/likelyAnswerController.php');
-
 session_start();
 if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     header('Location: login.php');
 }
-
-if (isset($_GET['equation'])) {
-  $equation = $_GET['equation'];
-  $answer = $_GET['answer'];
-  $numberAnswers = $_GET['numberAnswers'];
-  $likelyAnswers = [];
-
-  $controller = new EquationController();
-  $equationObject = $controller->createEquation($equation, $answer);
-
-  for ($i = 0; $i <= $numberAnswers; $i++) {
-    $likelyAnswer = $_GET['answer' . $i];
-    $likelyMessage = $_GET['message' . $i];
-    
-    $likelyAnswerController = new LikelyAnswerController();
-    $likelyAnswerObject = $likelyAnswerController->createLikelyAnswer($equation, $likelyAnswer, $likelyMessage);
-    if ($likelyAnswerObject !== null) {
-      array_push($likelyAnswers, $likelyAnswerObject);
-    } else {
-      print_r('Error fatal');
-      break;
-    }
-  }
-  
-  if ($equationObject === false) {
-    print_r('Error');
-  } else {
-    print_r('Success');
-  }
-}
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+require_once('../controller/equationController.php');
+$equationController = new EquationController();
+$equations = $equationController->getAllEquations();
 ?>
+
 <!doctype html>
 
 <html lang="en" class=" overthrow-enabled">
@@ -48,25 +21,7 @@ if (isset($_GET['equation'])) {
 		<title>Ingresar Producto Notable</title>
 		<!-- <link rel="stylesheet" href="../../assets/css/site.css">  -->
 		<script type="text/javascript" src="../../assets/js/jquery.js"></script>
-		<script type="text/javascript">
-    var i = 0;
-    function addLikelyAnswer() {
-      $('#save').remove();
-      $('#numberAnswers').remove();
-      var newEquation = $('#newEquation');
-      var likelyAnswer = $('<div><label for="answer' + i + '" class="likelyA">Posible Error ' + (i + 1) + ': </label>' +
-        '\n<input type="text" id="answer' + i + '" name="answer' + i + '" required></div>').fadeIn("slow");
-      newEquation.append(likelyAnswer);
-      var message = $('<div><label for="message' + i + '" class="likelyM">Mensaje al Error ' + (i + 1) + ': </label>' +
-        '\n<input type="text" id="message' + i + '" name="message' + i + '" required></div>').fadeIn("slow");
-      newEquation.append(message);  
-      i++;
-      var save = $('<button id="save">Guardar</button>').fadeIn('slow');
-      newEquation.append(save);
-      var numberAnswers = $('<input type="hidden" id="numberAnswers" name="numberAnswers" value="' + (i - 1) +'">');
-      newEquation.append(numberAnswers);
-    }
-  </script>
+		
 
 		<!-- Bootstrap Core -->
 		<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -109,7 +64,8 @@ if (isset($_GET['equation'])) {
 				text-align: right;
 			}
 		</style>
-
+	
+</head>
 		<body class=" nifty-ready pace-done">
 			<!-- Page Loader -->
 			<div class="pace pace-inactive">
@@ -195,31 +151,62 @@ if (isset($_GET['equation'])) {
 					<!--===================================================-->
 					<div id="content-container">
 
-						<h3>Ingrese la ecuación que desee evaluar junto con la respuesta correcta.</h3>
-
-						<h4><small>Se pueden agregar posibles errores junto con mensajes hacía el usuario al cometerlos</small></h4>
-
-						<div class="col-xs-4">
-							<form id="newEquation" action="" >
-
-								<div class="form-group ">
-									<label for="equation"> Producto notable: </label>
-									<input type="text" id="equation" name="equation" class="form-control" required>
-								</div>
-								<div class="form-group ">
-									<label for="answer"> Respuesta correcta: </label>
-									<input type="text" id="answer" name="answer" class="form-control" required>
-								</div>
-								<button id="save" class="btn btn-default">
-									Guardar
-								</button>
-
-							</form>
-							<button id="add" onclick="addLikelyAnswer();" class="btn btn-default">
-								Agregar posible respuesta
-							</button>
-						</div>
-
+						<form id="assignForm" method="post" action="../controller/assignController.php">
+  <table>
+    <tr>
+      <th>
+        Equation
+      </th>
+      <?php foreach ($equations['groups'] as $group) { ?>
+        <th>
+          <?php echo $group ?>
+        </th>
+      <?php } ?>
+    </tr>
+    <?php for ($i = 0; $i < sizeof($equations['ungrouped']); $i++) { ?>
+      <tr>
+        <td>
+          <?php echo $equations['ungrouped'][$i]->getEquation(); ?>
+        </td>
+        <?php foreach ($equations['groups'] as $group) { ?>
+          <td>
+            <input type="checkbox" id="ue<?php echo $i . "g" . $group; ?>" name="ue<?php echo $i . "g" . $group; ?>">
+          </td>
+        <?php } ?>
+      </tr>
+    <?php } ?>
+    <?php for ($i = 0; $i < sizeof($equations['grouped']); $i++) { ?>
+      <tr>
+        <td>
+          <?php echo $equations['grouped'][$i][0]->getEquation(); ?>
+        </td>
+        <?php foreach ($equations['groups'] as $group) { ?>
+          <td>
+            <input type="checkbox" id="e<?php echo $i . "g" . $group; ?>" name="e<?php echo $i . "g" . $group; ?>">
+          </td>
+        <?php } ?>
+      </tr>
+    <?php } ?>
+  </table>
+  <button>Asignar</button>
+  
+  
+</form>
+	<script>
+  $(document).ready(function () {
+    <?php for ($i = 0; $i < sizeof($equations['grouped']); $i++) { ?>
+    <?php foreach ($equations['groups'] as $group) { ?>
+    var _check = <?php if (in_array($group, $equations['grouped'][$i][1])) {
+        echo "true";
+        } else {
+        echo "false";
+        } ?>;
+    var id = "#e<?php echo $i . "g" . $group; ?>";
+    $(id).prop('checked', _check);
+    <?php } ?>
+    <?php } ?>
+  });
+</script>
 					</div>
 					<!--===================================================-->
 					<!-- END OF CONTENT CONTAINER -->
@@ -301,4 +288,5 @@ if (isset($_GET['equation'])) {
 
 		</body>
 </html>
+
 

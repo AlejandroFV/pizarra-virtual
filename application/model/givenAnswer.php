@@ -21,6 +21,10 @@ class GivenAnswer
    * @var String
    */
   private $answer;
+  /**
+   * @var int
+   */
+  private $attempt;
 
   /**
    * RespuestaDada constructor.
@@ -91,5 +95,19 @@ class GivenAnswer
     $this->answer = $answer;
   }
 
-  
+  /**
+   * @return int
+   */
+  public function getAttempt()
+  {
+    return $this->attempt;
+  }
+
+  /**
+   * @param int $attempt
+   */
+  public function setAttempt($attempt)
+  {
+    $this->attempt = $attempt;
+  }
 }

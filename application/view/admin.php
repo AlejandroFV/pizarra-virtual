@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 if ($_SESSION["valida"] == false && $_SESSION["role"] != 'admin') {
@@ -186,75 +187,119 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'admin') {
 									<div class="nano-content" tabindex="0" style="right: -15px;">
 										<ul id="mainnav-menu" class="list-group">
 											<?php
-											if ($_SESSION["role"] == 'tutor') {
-												echo '<li class="dropdown">
-<a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
-Cuenta
-<span class="caret"></span>
-</a>
-<ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-<li><a href="#">Modificar datos</a></li>
+                                if ($_SESSION["role"] == 'tutor') {
+                                    echo '
+                                <li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Alumnos
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="registrarAlumno.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="users.php"><strong>Ubicación</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="#"></a></li>
 
-</ul>
-</li>';
-											} else {
-												if ($_SESSION["role"] == 'alumno') {
-													echo '<li class="dropdown">
-<a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
-Cuenta
-<span class="caret"></span>
-</a>
-<ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-<li><a href="#">Modificar datos</a></li>
-<li><a href="#">Eliminar cuenta</a></li>
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-</ul>
-</li>
-<li class="dropdown">
-<a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
-Documentos
-<span class="caret"></span>
-</a>
-<ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-</ul>
+  </ul>
 </li>
 
 <li class="dropdown">
-<a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
-Metricas
-<span class="caret"></span>
-</a>
-<ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-</ul>
-</li>';
-												} else {
-													if ($_SESSION["role"] == 'admin') {
-														echo '<li class="dropdown">
-<a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
-Tutores
-<span class="caret"></span>
-</a>
-<ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-<li><a href="#">Alta de tutores</a></li>
-<li><a href="#">Baja de tutores</a></li>
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-</ul>
-</li>';
-													}
-												}
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Tutor
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="registrarTutor.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="cambiarDatosTutor.php"><strong>Modificar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="#"></a></li>
 
-											}
-											?>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Archivos
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="addFileView.php">Agregar nuevo</a></li>
+    <li><a href="indexFileView.php">Ver archivos</a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li> 
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Ecuaciones
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="newEquation.php">Agregar ecuacion</a></li>
+    <li><a href="assignEquations.php">Asignar ecuacion</a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>';
+                                } else {
+                                    if ($_SESSION["role"] == 'alumno') {
+                                        echo '
+                                <li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Documentos
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="indexFileView.php"><strong>Ver documentos</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="#"></a></li>
+
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Metricas
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>
+</li>
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Cuenta
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="cambiarDatosAlumno.php">Modificar datos</a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>
+';
+                                    } else {
+                                        if ($_SESSION["role"] == 'admin') {
+                                            echo '<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Tutores
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#">Alta de tutores</a></li>
+    <li><a href="#">Baja de tutores</a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>';
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                
+                                ?>
 										</ul>
 									</div>
 								</div>

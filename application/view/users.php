@@ -38,9 +38,14 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
         <script type="text/javascript" src="../../assets/js/zxml.js"></script>
 
         <style type="text/css">
-            #map_fmat {
-                height: 200px;
-                width: 200px;
+            #map {
+                height: 100%;
+                width: 100%;
+            }
+
+            div.scroll {
+                height: 100%;
+                overflow: scroll;
             }
         </style>
     </head>
@@ -131,7 +136,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
                 <!-- CONTENT CONTAINER -->
                 <!--===================================================-->
                 <div id="content-container">
-                    <div class="col-md-8" id="students">
+                    <div class="col-md-8 scroll" id="students">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -147,7 +152,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'alumno') {
                         </table>
                     </div>
                     <div class="col-md-4">
-                        <div id="map" style="width:100%; height:100%"></div>
+                        <div id="map"></div>
                     </div>
 
                     <div id="divStatus"></div>
@@ -331,7 +336,7 @@ Morales</a>
                 google.maps.event.addListener(marker, 'click', function () {
                     infowindow.open(map, marker);
                 });
-                
+
                 google.maps.event.addDomListener(window, 'load');
             }
         </script>

@@ -151,8 +151,8 @@ $equations = $equationController->getAllEquations();
 					<!--===================================================-->
 					<div id="content-container">
 
-						<form id="assignForm" method="post" action="../controller/assignController.php">
-  <table>
+                                            <form id="assignForm" method="post" action="../controller/assignController.php">
+  <table  class="table table-bordered table-hover">
     <tr>
       <th>
         Equation

@@ -19,6 +19,9 @@ if (isset($_GET['equation'])) {
   for ($i = 0; $i <= $numberAnswers; $i++) {
     $likelyAnswer = $_GET['answer' . $i];
     $likelyMessage = $_GET['message' . $i];
+	
+	$likelyAnswer = trim($likelyAnswer);
+   $likelyAnswer = str_replace(' ', '', $likelyAnswer);
     
     $likelyAnswerController = new LikelyAnswerController();
     $likelyAnswerObject = $likelyAnswerController->createLikelyAnswer($equation, $likelyAnswer, $likelyMessage);
@@ -34,6 +37,7 @@ if (isset($_GET['equation'])) {
     //header('location: ../view/assignEquations.php');
   } else {
     //print_r('Success');
+    echo '<script type="text/javascript">	alert("Exito");</script>';
 	header('location: ../view/newEquation.php');
   }
 }
@@ -42,7 +46,7 @@ if (isset($_GET['equation'])) {
 
 <html lang="en" class=" overthrow-enabled">
 	<head>
-
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<meta charset="UTF-8">

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2015 a las 17:56:39
--- Versión del servidor: 5.5.39
--- Versión de PHP: 5.4.31
+-- Tiempo de generación: 01-12-2015 a las 22:40:49
+-- Versión del servidor: 5.6.20
+-- Versión de PHP: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,10 +36,22 @@ CREATE TABLE IF NOT EXISTS `equations` (
 --
 
 INSERT INTO `equations` (`equation`, `answer`) VALUES
+('(a+1)^2', 'a^2+2a+1'),
+('(a+3)^2', 'a^2+6a+9'),
+('(a+4)^2', 'a^2+8a+16'),
+('(a+5)^2', 'a^2+10a+25'),
+('(i+1)^2', 'i^2+2i+1'),
+('(i+3)^2', 'i^2+6i+9'),
+('(i+4)^2', 'i^2+8i+16'),
+('(i+5)^2', 'i^2+10i+25'),
+('(m+1)^2', 'm^2+2m+1'),
+('(m+3)^2', 'm^2+6m+9'),
+('(m+4)^2', 'm^2+8m+16'),
+('(m+5)^2', 'm^2+10m+25'),
 ('(x+1)^2', 'x^2+2x+1'),
-('(x+2)^2', 'x^2+4x+4'),
 ('(x+3)^2', 'x^2+6x+9'),
-('(x+4)^2', 'x^2+8x+16');
+('(x+4)^2', 'x^2+8x+16'),
+('(x+5)^2', 'x^2+10x+25');
 
 -- --------------------------------------------------------
 
@@ -50,7 +62,7 @@ INSERT INTO `equations` (`equation`, `answer`) VALUES
 CREATE TABLE IF NOT EXISTS `expressions` (
 `id` int(20) NOT NULL,
   `expression` varchar(200) CHARACTER SET utf32 NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `expressions`
@@ -69,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `expressions_types` (
 `id` int(11) NOT NULL,
   `id_expression` int(11) NOT NULL,
   `expression_type` varchar(200) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `expressions_types`
@@ -93,27 +105,38 @@ INSERT INTO `expressions_types` (`id`, `id_expression`, `expression_type`) VALUE
 CREATE TABLE IF NOT EXISTS `given_answers` (
 `id_answer` int(11) NOT NULL,
   `equation` varchar(45) NOT NULL,
-  `user` varchar(255) NOT NULL,
-  `answer` varchar(45) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+  `user` varchar(45) NOT NULL,
+  `answer` varchar(45) NOT NULL,
+  `attempts` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `given_answers`
 --
 
-INSERT INTO `given_answers` (`id_answer`, `equation`, `user`, `answer`) VALUES
-(8, '(x+1)^2', '001', 'x^2+2x+1'),
-(9, '(x+2)^2', '001', 'x^2+4x+4'),
-(10, '(x+3)^2', '001', 'x^2+6x+9'),
-(11, '(x+4)^2', '001', 'x^2+8x+8'),
-(12, '(x+1)^2', '001', 'x^2+2x+1'),
-(13, '(x+2)^2', '001', 'x^2+4x+4'),
-(14, '(x+3)^2', '001', 'x^2+6x+9'),
-(15, '(x+4)^2', '001', 'x^2+8x+8'),
-(16, '(x+1)^2', '001', 'x^2+2x+1'),
-(17, '(x+2)^2', '001', 'x^2+4x+4'),
-(18, '(x+3)^2', '001', 'x^2+6x+9'),
-(19, '(x+4)^2', '001', 'x^2+8x+8');
+INSERT INTO `given_answers` (`id_answer`, `equation`, `user`, `answer`, `attempts`) VALUES
+(1, '(m+1)^2', '001', 'm^2+2m+1', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `group_equation`
+--
+
+CREATE TABLE IF NOT EXISTS `group_equation` (
+  `equation` varchar(45) NOT NULL,
+  `group` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `group_equation`
+--
+
+INSERT INTO `group_equation` (`equation`, `group`) VALUES
+('(a+1)^2', '1'),
+('(i+1)^2', '2'),
+('(m+1)^2', '3'),
+('(x+1)^2', '5');
 
 -- --------------------------------------------------------
 
@@ -133,11 +156,22 @@ CREATE TABLE IF NOT EXISTS `likely_answers` (
 --
 
 INSERT INTO `likely_answers` (`equation`, `likely_answer`, `message`, `count`) VALUES
-('(x+1)^2', '', '', 0),
-('(x+2)^2', 'x^2+2x+4', 'Checa el 2do termino', 0),
+('(a+1)^2', 'a^2+2a+2', 'Esta mal', 0),
+('(i+1)^2', 'i^2+2i+2', 'Esta mal', 0),
+('(m+1)^2', 'm^2+2m+2', 'Esta mal', 0),
+('(x+1)^2', 'x^2+2x+2', 'Esta mal', 0),
+('(a+3)^2', 'a^2+2a+4', 'Esta mal', 0),
+('(i+3)^2', 'i^2+2i+4', 'Esta mal', 0),
+('(m+3)^2', 'm^2+2m+4', 'Esta mal', 0),
 ('(x+3)^2', 'x^2+2x+4', 'Esta mal', 0),
-('(x+4)^2', 'x^2+8x+8', 'Esta mal', 4),
-('(x+4)^2', 'x^2+8x+8', 'Esta mal', 4);
+('(a+5)^2', 'a^2+10a+20', 'maaal', 0),
+('(i+5)^2', 'i^2+10i+20', 'maaal', 0),
+('(m+5)^2', 'm^2+10m+20', 'maaal', 0),
+('(x+5)^2', 'x^2+10x+20', 'maaal', 0),
+('(a+4)^2', 'a^2+8a+8', 'Esta mal', 0),
+('(i+4)^2', 'i^2+8i+8', 'Esta mal', 0),
+('(m+4)^2', 'm^2+8m+8', 'Esta mal', 0),
+('(x+4)^2', 'x^2+8x+8', 'Esta mal', 0);
 
 -- --------------------------------------------------------
 
@@ -150,7 +184,19 @@ CREATE TABLE IF NOT EXISTS `messege` (
   `user` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `messege` text COLLATE utf8_unicode_ci NOT NULL,
   `group` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+
+--
+-- Volcado de datos para la tabla `messege`
+--
+
+INSERT INTO `messege` (`id`, `user`, `messege`, `group`) VALUES
+(5, 'Alum', 'hola ', 1),
+(6, 'carlos', 'holaaa ', 1),
+(7, 'Alum', 'hey ', 1),
+(8, 'Alum', 'hhhhh ', 1),
+(9, 'Alum', 'hhh ', 1),
+(10, 'Alum', 'neee ', 1);
 
 -- --------------------------------------------------------
 
@@ -161,8 +207,8 @@ CREATE TABLE IF NOT EXISTS `messege` (
 CREATE TABLE IF NOT EXISTS `student` (
   `id_user` varchar(255) NOT NULL,
   `specialty` varchar(255) NOT NULL,
-  `latitude` float NOT NULL,
-  `longitude` float NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
   `group` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -172,7 +218,11 @@ CREATE TABLE IF NOT EXISTS `student` (
 
 INSERT INTO `student` (`id_user`, `specialty`, `latitude`, `longitude`, `group`) VALUES
 ('001', 'lis', 666, 666, '3'),
-('123', 'LIS', -333.444, 1111.22, '');
+('002', 'lis', 0, 0, '2'),
+('003', 'lis', 777, 777, '1'),
+('004', 'lis', 0, 0, '1'),
+('005', 'lis', 0, 0, '5'),
+('122', 'lis', 8888, 8888, '1');
 
 -- --------------------------------------------------------
 
@@ -186,7 +236,15 @@ CREATE TABLE IF NOT EXISTS `tbl_file_uploads` (
   `type` varchar(10) NOT NULL,
   `size` int(11) NOT NULL,
   `workgroup` int(11) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Volcado de datos para la tabla `tbl_file_uploads`
+--
+
+INSERT INTO `tbl_file_uploads` (`id`, `file`, `type`, `size`, `workgroup`) VALUES
+(8, 'ej1', 'pdf', 192, 4),
+(7, 'IEEE830_esp', 'pdf', 80, 1);
 
 -- --------------------------------------------------------
 
@@ -210,9 +268,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `password`, `name`, `last_name`, `email`, `gender`, `role`) VALUES
 ('001', '001', 'carlos', 'Araujo', 'carlos943@gmail.com', 'hombre', 'alumno'),
-('123', 'hola', 'luis', 'perez', 'luis@gmail.com', 'mujer', 'alumno'),
+('002', '002', 'Alum', 'Alum', 'carlos943@gmail.com', 'hombre', 'alumno'),
+('003', '003', 'Alum', 'Alum', 'carlos943@gmail.com', 'hombre', 'alumno'),
+('004', '004', 'Alum', 'Alum4', 'carlos943@gmail.com', 'hombre', 'alumno'),
+('005', '005', 'Alum', 'Alum5', 'carlos943@gmail.com', 'hombre', 'alumno'),
+('122', '0001', 'alejandro', 'sumarraga', 'carlos943@gmail.com', 'hombre', 'alumno'),
 ('321', 'admin', 'admin', 'admin', 'admin@gmail.com', 'hombre', 'admin'),
-('456', 'hola', 'tutor', 'tutor', 'tutor@gmail.com', 'mujer', 'tutor');
+('456', '0001', 'carlos', 'tutorrr', 'carlos943@gmail.com', 'hombre', 'tutor');
 
 --
 -- Índices para tablas volcadas
@@ -241,6 +303,12 @@ ALTER TABLE `expressions_types`
 --
 ALTER TABLE `given_answers`
  ADD PRIMARY KEY (`id_answer`), ADD KEY `producto_notable_idx` (`equation`), ADD KEY `usuario_idx` (`user`);
+
+--
+-- Indices de la tabla `group_equation`
+--
+ALTER TABLE `group_equation`
+ ADD PRIMARY KEY (`equation`,`group`), ADD KEY `fk_equation_idx` (`equation`);
 
 --
 -- Indices de la tabla `likely_answers`
@@ -290,17 +358,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 -- AUTO_INCREMENT de la tabla `given_answers`
 --
 ALTER TABLE `given_answers`
-MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `messege`
 --
 ALTER TABLE `messege`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tbl_file_uploads`
 --
 ALTER TABLE `tbl_file_uploads`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- Restricciones para tablas volcadas
 --
@@ -317,6 +385,12 @@ ADD CONSTRAINT `expressionRestriction` FOREIGN KEY (`id_expression`) REFERENCES 
 ALTER TABLE `given_answers`
 ADD CONSTRAINT `fk_equation` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION,
 ADD CONSTRAINT `fk_user` FOREIGN KEY (`user`) REFERENCES `student` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `group_equation`
+--
+ALTER TABLE `group_equation`
+ADD CONSTRAINT `fk_equ` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `likely_answers`

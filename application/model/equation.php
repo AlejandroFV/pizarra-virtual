@@ -42,7 +42,7 @@ class Equation
    */
   public function getAnswer()
   {
-    return $this->answer;
+    return str_replace(' ', '', $this->answer);
   }
 
   /**

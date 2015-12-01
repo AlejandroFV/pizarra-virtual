@@ -18,9 +18,8 @@ $_SESSION["role"] = "";
     <!-- Admin Core -->
     <link href="../../assets/css/nifty.min.css" rel="stylesheet">
 
-    <!-- Roboto Font -->
-    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
-
+    
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css"> 
     <!-- Link to theme -->
     <link href="../../assets/css/themes/themes-navbar/theme-ocean.min.css" rel="stylesheet">
 

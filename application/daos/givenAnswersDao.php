@@ -19,9 +19,9 @@ class GivenAnswersDao
     return ejecutar_query($query);
   }
   
-  public function updateGivenAnswer($equation, $user_id, $attempt)
+  public function updateGivenAnswer($equation, $user_id, $answer, $attempt)
   {
-    $query = "UPDATE given_answers SET attempts = '$attempt' WHERE equation = '$equation' AND user = '$user_id';";
+    $query = "UPDATE given_answers SET attempts = '$attempt', answer = '$answer' WHERE equation = '$equation' AND user = '$user_id';";
     return ejecutar_query($query);
   }
   

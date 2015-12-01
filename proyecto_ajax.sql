@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2015 a las 15:24:17
--- Versión del servidor: 5.6.20
--- Versión de PHP: 5.5.15
+-- Tiempo de generación: 01-12-2015 a las 17:56:39
+-- Versión del servidor: 5.5.39
+-- Versión de PHP: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -40,6 +40,49 @@ INSERT INTO `equations` (`equation`, `answer`) VALUES
 ('(x+2)^2', 'x^2+4x+4'),
 ('(x+3)^2', 'x^2+6x+9'),
 ('(x+4)^2', 'x^2+8x+16');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `expressions`
+--
+
+CREATE TABLE IF NOT EXISTS `expressions` (
+`id` int(20) NOT NULL,
+  `expression` varchar(200) CHARACTER SET utf32 NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `expressions`
+--
+
+INSERT INTO `expressions` (`id`, `expression`) VALUES
+(1, 'Productos notables');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `expressions_types`
+--
+
+CREATE TABLE IF NOT EXISTS `expressions_types` (
+`id` int(11) NOT NULL,
+  `id_expression` int(11) NOT NULL,
+  `expression_type` varchar(200) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Volcado de datos para la tabla `expressions_types`
+--
+
+INSERT INTO `expressions_types` (`id`, `id_expression`, `expression_type`) VALUES
+(1, 1, 'Binomio al cuadrado'),
+(2, 1, 'Binomio al cubo'),
+(3, 1, 'Binomios conjugados'),
+(4, 1, 'Binomios con término común'),
+(5, 1, 'Binomios con término semejante'),
+(6, 1, 'Binomio por trinomio'),
+(7, 1, 'Trinomio al cuadrado');
 
 -- --------------------------------------------------------
 
@@ -182,6 +225,18 @@ ALTER TABLE `equations`
  ADD PRIMARY KEY (`equation`);
 
 --
+-- Indices de la tabla `expressions`
+--
+ALTER TABLE `expressions`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `expressions_types`
+--
+ALTER TABLE `expressions_types`
+ ADD PRIMARY KEY (`id`), ADD KEY `indice` (`id_expression`) COMMENT 'Restriccion del tipo de expresion con la expresion';
+
+--
 -- Indices de la tabla `given_answers`
 --
 ALTER TABLE `given_answers`
@@ -222,6 +277,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `expressions`
+--
+ALTER TABLE `expressions`
+MODIFY `id` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `expressions_types`
+--
+ALTER TABLE `expressions_types`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT de la tabla `given_answers`
 --
 ALTER TABLE `given_answers`
@@ -239,6 +304,12 @@ MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `expressions_types`
+--
+ALTER TABLE `expressions_types`
+ADD CONSTRAINT `expressionRestriction` FOREIGN KEY (`id_expression`) REFERENCES `expressions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `given_answers`

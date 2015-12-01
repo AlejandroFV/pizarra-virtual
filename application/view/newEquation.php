@@ -31,9 +31,10 @@ if (isset($_GET['equation'])) {
   }
   
   if ($equationObject === false) {
-    print_r('Error');
+    //header('location: ../view/assignEquations.php');
   } else {
-    print_r('Success');
+    //print_r('Success');
+	header('location: ../view/newEquation.php');
   }
 }
 ?>
@@ -54,11 +55,11 @@ if (isset($_GET['equation'])) {
       $('#save').remove();
       $('#numberAnswers').remove();
       var newEquation = $('#newEquation');
-      var likelyAnswer = $('<div><label for="answer' + i + '" class="likelyA">Posible Error ' + (i + 1) + ': </label>' +
-        '\n<input type="text" id="answer' + i + '" name="answer' + i + '" required></div>').fadeIn("slow");
+      var likelyAnswer = $('<div class="form-group "><label for="answer' + i + '" class="likelyA">Posible Error ' + (i + 1) + ': </label>' +
+        '\n<input type="text" id="answer' + i + '" name="answer' + i + '" class="form-control" required></div>').fadeIn("slow");
       newEquation.append(likelyAnswer);
-      var message = $('<div><label for="message' + i + '" class="likelyM">Mensaje al Error ' + (i + 1) + ': </label>' +
-        '\n<input type="text" id="message' + i + '" name="message' + i + '" required></div>').fadeIn("slow");
+      var message = $('<div class="form-group "><label for="message' + i + '" class="likelyM">Mensaje al Error ' + (i + 1) + ': </label>' +
+        '\n<input type="text" id="message' + i + '" name="message' + i + '" class="form-control" required></div>').fadeIn("slow");
       newEquation.append(message);  
       i++;
       var save = $('<button id="save">Guardar</button>').fadeIn('slow');

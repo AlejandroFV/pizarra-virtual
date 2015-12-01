@@ -23,7 +23,7 @@ h2{
 }
 #blackboard label{
     padding: 1em;
-    font-size: 1.7rem;
+    font-size: 3rem;
 }
 #blackboard .answers {
     background-color: rgba(0,0,0,0);
@@ -32,12 +32,12 @@ h2{
     border-bottom: 2px solid white;
     display: inline-block;
     font-family: 'Bad Script', cursive;
-    font-size: 1.7rem;
+    font-size: 3rem;
     width: 8em;
     padding-left: .5em;
 }
 #blackboard .checked{
-    font-size: 1.7rem;
+    font-size: 2rem;
     display: inline-block;
     padding-left: 1em;
 }

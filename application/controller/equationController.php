@@ -1,7 +1,7 @@
 <?php
 require_once('../model/equation.php');
 require_once('../daos/equationDao.php');
-error_reporting(0);
+
 class EquationController
 {
   private $equationDao;
@@ -77,7 +77,7 @@ class EquationController
 
     $result = null;
     for ($i = 0; $i < sizeof($equations); $i++) {
-      $result = $this->equationDao->createEquation($equations[$i], $answers[$i]);
+      $result = $this->equationDao->createEquation($equations[$i], str_replace(' ', '', $answers[$i]));
       if ($result == false) {
         return false;
       }

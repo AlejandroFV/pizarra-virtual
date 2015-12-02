@@ -3,7 +3,8 @@ session_start();
 if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     header('Location: login.php');
 }
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
+error_reporting(0);
 ini_set('display_errors', 1);
 require_once('../controller/equationController.php');
 $equationController = new EquationController();

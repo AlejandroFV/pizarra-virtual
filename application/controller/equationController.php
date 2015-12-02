@@ -1,7 +1,7 @@
 <?php
 require_once('../model/equation.php');
 require_once('../daos/equationDao.php');
-
+error_reporting(0);
 class EquationController
 {
   private $equationDao;

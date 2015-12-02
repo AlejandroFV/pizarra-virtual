@@ -2,7 +2,7 @@
 require_once('../controller/equationController.php');
 $equationController = new EquationController();
 $equations = $equationController->getAllEquations();
-
+error_reporting(0);
 $ids = [
   'ungrouped' => [],
   'grouped' => []
@@ -42,4 +42,6 @@ foreach ($ids['ungrouped'] as $ungrouped) {
   }
 }
 
-header('location: ../view/assignEquations.php');
+echo'<script type="text/javascript">alert("Asignacion realizada"); document.location.href="../view/assignEquations.php";</script>';
+
+//header('location: ../view/assignEquations.php');

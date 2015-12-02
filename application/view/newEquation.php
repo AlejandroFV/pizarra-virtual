@@ -1,7 +1,7 @@
 <?php
 require_once('../controller/equationController.php');
 require_once('../controller/likelyAnswerController.php');
-
+error_reporting(0);
 session_start();
 if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     header('Location: login.php');
@@ -37,8 +37,8 @@ if (isset($_GET['equation'])) {
     //header('location: ../view/assignEquations.php');
   } else {
     //print_r('Success');
-    echo '<script type="text/javascript">	alert("Exito");</script>';
-	header('location: ../view/newEquation.php');
+    echo'<script type="text/javascript">alert("Ecuación agregada"); document.location.href="../view/newEquation.php";</script>';
+	//header('location: ../view/newEquation.php');
   }
 }
 ?>

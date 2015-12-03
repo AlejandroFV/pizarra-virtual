@@ -3,6 +3,11 @@ session_start();
 if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 	header('Location: login.php');
 }
+
+include '../controller/conexion_bd.php';
+
+$result = mysqli_query($oLink, "SELECT * FROM user WHERE id = " . $_SESSION["id"]);
+$tutor = $result->fetch_assoc();
 ?>
 <html lang="en" class=" overthrow-enabled">
 	<head>
@@ -199,23 +204,23 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 							<h1>Modificar Datos</h1>
 							<div class="form-group " >
 								<label>Nombre:</label>
-								<input name="nom" class="form-control" type="text" required/>
+								<input name="nom" class="form-control" type="text" required value="<?php echo $tutor['name'] ?>"/>
 							</div>
 							<div class="form-group " >
 								<label>Apellido:</label></td>
-								<input name="ap" class="form-control" type="text" required/>
+								<input name="ap" class="form-control" type="text" required value="<?php echo $tutor['last_name'] ?>" />
 							</div>
 
 							<div class="form-group " >
 								<label>Mail:</label>
-								<input name="mail" class="form-control" type="email" required/>
+								<input name="mail" class="form-control" type="email" required value="<?php echo $tutor['email'] ?>"/>
 							</div>
 
 							<div class="form-group " >
 								<label>Genero:</label>
 								<select name="sex" class="esp" required>
-									<option value="hombre">hombre</option>
-									<option value="mujer">mujer</option>
+									<option value="hombre" <?php echo $tutor['gender']== "hombre" ? "selected":"" ?>>hombre</option>
+									<option value="mujer" <?php echo $tutor['gender']== "mujer" ? "selected":"" ?>>mujer</option>
 								</select>
 							</div>
 
@@ -257,7 +262,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
     <li><a href="registrarAlumno.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
     <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
-    <li><a href="users.php"><strong>Ubicación</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="users.php"><strong>Ubicaciï¿½n</strong></a></span> <span class="menu-title"></a></li>
 
   </ul>
 </li>

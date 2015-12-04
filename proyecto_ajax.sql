@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2015 a las 22:40:49
--- Versión del servidor: 5.6.20
--- Versión de PHP: 5.5.15
+-- Host: 127.0.0.1
+-- Generation Time: Dec 03, 2015 at 07:06 PM
+-- Server version: 10.1.8-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,25 +14,25 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `proyecto_ajax`
+-- Database: `proyecto_ajax`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `equations`
+-- Table structure for table `equations`
 --
 
-CREATE TABLE IF NOT EXISTS `equations` (
+CREATE TABLE `equations` (
   `equation` varchar(45) NOT NULL,
   `answer` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `equations`
+-- Dumping data for table `equations`
 --
 
 INSERT INTO `equations` (`equation`, `answer`) VALUES
@@ -56,16 +56,16 @@ INSERT INTO `equations` (`equation`, `answer`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `expressions`
+-- Table structure for table `expressions`
 --
 
-CREATE TABLE IF NOT EXISTS `expressions` (
-`id` int(20) NOT NULL,
+CREATE TABLE `expressions` (
+  `id` int(20) NOT NULL,
   `expression` varchar(200) CHARACTER SET utf32 NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `expressions`
+-- Dumping data for table `expressions`
 --
 
 INSERT INTO `expressions` (`id`, `expression`) VALUES
@@ -74,17 +74,17 @@ INSERT INTO `expressions` (`id`, `expression`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `expressions_types`
+-- Table structure for table `expressions_types`
 --
 
-CREATE TABLE IF NOT EXISTS `expressions_types` (
-`id` int(11) NOT NULL,
+CREATE TABLE `expressions_types` (
+  `id` int(11) NOT NULL,
   `id_expression` int(11) NOT NULL,
   `expression_type` varchar(200) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) COMMENT='Restriccion del tipo de expresion con la expresion';
 
 --
--- Volcado de datos para la tabla `expressions_types`
+-- Dumping data for table `expressions_types`
 --
 
 INSERT INTO `expressions_types` (`id`, `id_expression`, `expression_type`) VALUES
@@ -99,19 +99,19 @@ INSERT INTO `expressions_types` (`id`, `id_expression`, `expression_type`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `given_answers`
+-- Table structure for table `given_answers`
 --
 
-CREATE TABLE IF NOT EXISTS `given_answers` (
-`id_answer` int(11) NOT NULL,
+CREATE TABLE `given_answers` (
+  `id_answer` int(11) NOT NULL,
   `equation` varchar(45) NOT NULL,
   `user` varchar(45) NOT NULL,
   `answer` varchar(45) NOT NULL,
   `attempts` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `given_answers`
+-- Dumping data for table `given_answers`
 --
 
 INSERT INTO `given_answers` (`id_answer`, `equation`, `user`, `answer`, `attempts`) VALUES
@@ -120,16 +120,16 @@ INSERT INTO `given_answers` (`id_answer`, `equation`, `user`, `answer`, `attempt
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `group_equation`
+-- Table structure for table `group_equation`
 --
 
-CREATE TABLE IF NOT EXISTS `group_equation` (
+CREATE TABLE `group_equation` (
   `equation` varchar(45) NOT NULL,
   `group` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `group_equation`
+-- Dumping data for table `group_equation`
 --
 
 INSERT INTO `group_equation` (`equation`, `group`) VALUES
@@ -141,10 +141,10 @@ INSERT INTO `group_equation` (`equation`, `group`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `likely_answers`
+-- Table structure for table `likely_answers`
 --
 
-CREATE TABLE IF NOT EXISTS `likely_answers` (
+CREATE TABLE `likely_answers` (
   `equation` varchar(45) NOT NULL,
   `likely_answer` varchar(45) NOT NULL,
   `message` varchar(45) NOT NULL,
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `likely_answers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `likely_answers`
+-- Dumping data for table `likely_answers`
 --
 
 INSERT INTO `likely_answers` (`equation`, `likely_answer`, `message`, `count`) VALUES
@@ -176,18 +176,18 @@ INSERT INTO `likely_answers` (`equation`, `likely_answer`, `message`, `count`) V
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `messege`
+-- Table structure for table `messege`
 --
 
-CREATE TABLE IF NOT EXISTS `messege` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `messege` (
+  `id` int(10) UNSIGNED NOT NULL,
   `user` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `messege` text COLLATE utf8_unicode_ci NOT NULL,
   `group` int(10) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `messege`
+-- Dumping data for table `messege`
 --
 
 INSERT INTO `messege` (`id`, `user`, `messege`, `group`) VALUES
@@ -201,10 +201,29 @@ INSERT INTO `messege` (`id`, `user`, `messege`, `group`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `student`
+-- Table structure for table `metrics`
 --
 
-CREATE TABLE IF NOT EXISTS `student` (
+CREATE TABLE `metrics` (
+  `id` int(11) NOT NULL,
+  `id_user` varchar(255) NOT NULL,
+  `dateMetric` date NOT NULL,
+  `expression` varchar(200) NOT NULL,
+  `expressionType` varchar(200) NOT NULL,
+  `numMistakes` int(11) NOT NULL,
+  `mistakes` text NOT NULL,
+  `frequency` text NOT NULL,
+  `startTime` time NOT NULL,
+  `endTime` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
   `id_user` varchar(255) NOT NULL,
   `specialty` varchar(255) NOT NULL,
   `latitude` double NOT NULL,
@@ -213,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `student`
+-- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`id_user`, `specialty`, `latitude`, `longitude`, `group`) VALUES
@@ -227,19 +246,19 @@ INSERT INTO `student` (`id_user`, `specialty`, `latitude`, `longitude`, `group`)
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_file_uploads`
+-- Table structure for table `tbl_file_uploads`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_file_uploads` (
-`id` int(10) NOT NULL,
+CREATE TABLE `tbl_file_uploads` (
+  `id` int(10) NOT NULL,
   `file` varchar(100) NOT NULL,
   `type` varchar(10) NOT NULL,
   `size` int(11) NOT NULL,
   `workgroup` int(11) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `tbl_file_uploads`
+-- Dumping data for table `tbl_file_uploads`
 --
 
 INSERT INTO `tbl_file_uploads` (`id`, `file`, `type`, `size`, `workgroup`) VALUES
@@ -249,10 +268,10 @@ INSERT INTO `tbl_file_uploads` (`id`, `file`, `type`, `size`, `workgroup`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `user`
+-- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `id` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -263,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `password`, `name`, `last_name`, `email`, `gender`, `role`) VALUES
@@ -277,132 +296,143 @@ INSERT INTO `user` (`id`, `password`, `name`, `last_name`, `email`, `gender`, `r
 ('456', '0001', 'carlos', 'tutorrr', 'carlos943@gmail.com', 'hombre', 'tutor');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `equations`
+-- Indexes for table `equations`
 --
 ALTER TABLE `equations`
- ADD PRIMARY KEY (`equation`);
+  ADD PRIMARY KEY (`equation`);
 
 --
--- Indices de la tabla `expressions`
+-- Indexes for table `expressions`
 --
 ALTER TABLE `expressions`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `expressions_types`
+-- Indexes for table `expressions_types`
 --
 ALTER TABLE `expressions_types`
- ADD PRIMARY KEY (`id`), ADD KEY `indice` (`id_expression`) COMMENT 'Restriccion del tipo de expresion con la expresion';
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `indice` (`id_expression`);
 
 --
--- Indices de la tabla `given_answers`
+-- Indexes for table `given_answers`
 --
 ALTER TABLE `given_answers`
- ADD PRIMARY KEY (`id_answer`), ADD KEY `producto_notable_idx` (`equation`), ADD KEY `usuario_idx` (`user`);
+  ADD PRIMARY KEY (`id_answer`),
+  ADD KEY `producto_notable_idx` (`equation`),
+  ADD KEY `usuario_idx` (`user`);
 
 --
--- Indices de la tabla `group_equation`
+-- Indexes for table `group_equation`
 --
 ALTER TABLE `group_equation`
- ADD PRIMARY KEY (`equation`,`group`), ADD KEY `fk_equation_idx` (`equation`);
+  ADD PRIMARY KEY (`equation`,`group`),
+  ADD KEY `fk_equation_idx` (`equation`);
 
 --
--- Indices de la tabla `likely_answers`
+-- Indexes for table `likely_answers`
 --
 ALTER TABLE `likely_answers`
- ADD KEY `producto_notable_idx` (`equation`);
+  ADD KEY `producto_notable_idx` (`equation`);
 
 --
--- Indices de la tabla `messege`
+-- Indexes for table `messege`
 --
 ALTER TABLE `messege`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `student`
+-- Indexes for table `metrics`
+--
+ALTER TABLE `metrics`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student`
 --
 ALTER TABLE `student`
- ADD PRIMARY KEY (`id_user`), ADD KEY `id_user` (`id_user`), ADD KEY `id_user_2` (`id_user`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_user_2` (`id_user`);
 
 --
--- Indices de la tabla `tbl_file_uploads`
+-- Indexes for table `tbl_file_uploads`
 --
 ALTER TABLE `tbl_file_uploads`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `expressions`
+-- AUTO_INCREMENT for table `expressions`
 --
 ALTER TABLE `expressions`
-MODIFY `id` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de la tabla `expressions_types`
+-- AUTO_INCREMENT for table `expressions_types`
 --
 ALTER TABLE `expressions_types`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `given_answers`
+-- AUTO_INCREMENT for table `given_answers`
 --
 ALTER TABLE `given_answers`
-MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `messege`
+-- AUTO_INCREMENT for table `messege`
 --
 ALTER TABLE `messege`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT de la tabla `tbl_file_uploads`
+-- AUTO_INCREMENT for table `metrics`
+--
+ALTER TABLE `metrics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `tbl_file_uploads`
 --
 ALTER TABLE `tbl_file_uploads`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `expressions_types`
---
-ALTER TABLE `expressions_types`
-ADD CONSTRAINT `expressionRestriction` FOREIGN KEY (`id_expression`) REFERENCES `expressions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `given_answers`
+-- Constraints for table `given_answers`
 --
 ALTER TABLE `given_answers`
-ADD CONSTRAINT `fk_equation` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_user` FOREIGN KEY (`user`) REFERENCES `student` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_equation` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`user`) REFERENCES `student` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `group_equation`
+-- Constraints for table `group_equation`
 --
 ALTER TABLE `group_equation`
-ADD CONSTRAINT `fk_equ` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_equ` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `likely_answers`
+-- Constraints for table `likely_answers`
 --
 ALTER TABLE `likely_answers`
-ADD CONSTRAINT `fk_eq` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_eq` FOREIGN KEY (`equation`) REFERENCES `equations` (`equation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `student`
+-- Constraints for table `student`
 --
 ALTER TABLE `student`
-ADD CONSTRAINT `fk_id_user_student_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `fk_id_user_student_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

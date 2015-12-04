@@ -53,21 +53,25 @@ $equations_size = sizeof($equations);
   <link href='https://fonts.googleapis.com/css?family=Homemade+Apple' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="../../assets/js/jquery.js"></script>
-  <script type="text/javascript">
+<script type="text/javascript">
     attempt = 1;
-    
+    result = 0;
+
     $(document).ready(function () {
       $("#attempts").val(attempt);
     });
-    
+
     function sendRequest() {
       $.post("../controller/validator.php", $('#equations-form').serialize()).done(function (data) {
         data = data.split("@");
         attempt = data[0];
         data.shift();
+        result = data[0];
+        data.shift();
         $("#attempts").val(attempt);
-        if (parseInt(attempt) > 3) {
+        if ((parseInt(attempt) > 3) || (result == <?php echo $equations_size; ?>)) {
           $("#send").remove();
+          $("#equations-form").append('<p id="result">Calificación: ' + result + '/' + <?php echo $equations_size?> + '</p>');
         }
         displayResult(data);
       });

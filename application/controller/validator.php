@@ -27,7 +27,7 @@ function normalizeEquation($eq)
   
   return $eq;
 }
-if ($equations !== null and isset($_SESSION['matricula'])) {
+if ($equations !== null and isset($_SESSION['id'])) {
   $i = 0;
   $givenAnswerController = new GivenAnswerController();
   $error = false;

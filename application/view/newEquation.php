@@ -293,7 +293,19 @@ if (isset($_GET['equation'])) {
     <li><a href="#"></a></li>
     <li><a href="#"></a></li>
   </ul>
-</li>';
+</li>
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Gráficas
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="../graph/php/views/grafica.php">Ver gráficas</a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>
+
+';
                                 } else {
                                     if ($_SESSION["role"] == 'alumno') {
                                         echo '

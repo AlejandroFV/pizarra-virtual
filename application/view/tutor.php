@@ -247,7 +247,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="../graph/php/views/tutor.index.php">Ver gráficas</a></li>
+    <li><a href="../graph/php/views/grafica.php">Ver gráficas</a></li>
     <li><a href="#"></a></li>
   </ul>
 </li>';
@@ -326,7 +326,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 
 				<!-- FOOTER -->
 				<!--===================================================-->
-				<footer id="footer">
+                                <footer id="footer">
 					<!-- Visible when the footer is static position -->
 					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 					<!-- <div class="hide-fixed pull-right pad-rgt">

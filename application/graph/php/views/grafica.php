@@ -1,8 +1,11 @@
 <?php
-//session_start();
+error_reporting(0);
+session_start();
 if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
-	header('Location: login.php');
+	header('Location: ../../../view/login.php');
 }
+
+
 ?>
 <html lang="en" class=" overthrow-enabled">
 	<head>
@@ -14,19 +17,19 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 		<script type="text/javascript">
 			function cerrarSesion() {
 
-				document.location.href = "login.php";
+				document.location.href = "../../../view/login.php";
 			}
 
 			function irAcambiarDatos() {
-				document.location.href = "cambiarDatosTutor.php";
+				document.location.href = "../../../view/cambiarDatosTutor.php";
 			}
 
 			function irARegistrarAlumno() {
-				document.location.href = "registrarAlumno.php";
+				document.location.href = "../../../view/registrarAlumno.php";
 			}
 
 			function irANuevaEcuacion() {
-				document.location.href = "newEquation.php";
+				document.location.href = "../../../view/newEquation.php";
 			}
 
 		</script>
@@ -131,7 +134,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 						<!-- BRAND LOGO & TEXT -->
 						<!--===================================================-->
 						<div class="navbar-header">
-							<a href="paginaPrincipal.php" class="navbar-brand"> <img src="../../assets/images/logo.png" name="Nifty Admin" id="Nifty Admin" class="brand-icon"> <span class="brand-title"> <span class="brand-text">Pizarra Virtual</span> </span> </a>
+							<a href="../../../view/paginaPrincipal.php" class="navbar-brand"> <img src="../../../../assets/images/logo.png" name="Nifty Admin" id="Nifty Admin" class="brand-icon"> <span class="brand-title"> <span class="brand-text">Pizarra Virtual</span> </span> </a>
 						</div>
 						<!--===================================================-->
 						<!-- END OF BRAND LOGO & TEXT -->
@@ -149,7 +152,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 
 									<!-- Dropdown button -->
 									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-									<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right"> <span class="pull-right"> <img src="../../assets/images/av1.png" name="Profile Picture" id="Profile Picture"
+									<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right"> <span class="pull-right"> <img src="../../../../assets/images/av1.png" name="Profile Picture" id="Profile Picture"
 										class="img-circle img-user media-object"> </span>
 									<div class="username hidden-xs">
 										<!--Obtener el nombre de usuario aqui-->
@@ -167,12 +170,12 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 
 											<!-- Dropdown list -->
 											<li>
-												<a href="login/login.php"> <i class="fa fa-user fa-fw fa-lg"></i> <span class="text-nowrap">Perfil</span> </a>
+												<a href="../../../view/login.php"> <i class="fa fa-user fa-fw fa-lg"></i> <span class="text-nowrap">Perfil</span> </a>
 											</li>
 
 											<!-- Dropdown list -->
 											<li>
-												<a href="login.php"> <i class="fa fa-sign-out fa-fw fa-lg"></i> <span>Salir</span> </a>
+												<a href="../../../view/login.php"> <i class="fa fa-sign-out fa-fw fa-lg"></i> <span>Salir</span> </a>
 											</li>
 										</ul>
 									</div>
@@ -249,9 +252,9 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="registrarAlumno.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
-    <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
-    <li><a href="users.php"><strong>Ubicaciï¿½n</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="../../../view/registrarAlumno.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="../../../view/eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="../../../view/users.php"><strong>Ubicaciï¿½n</strong></a></span> <span class="menu-title"></a></li>
 
   </ul>
 </li>
@@ -262,9 +265,9 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="registrarTutor.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
-    <li><a href="cambiarDatosTutor.php"><strong>Modificar</strong></a></span> <span class="menu-title"></a></li>
-    <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="../../../view/registrarTutor.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="../../../view/cambiarDatosTutor.php"><strong>Modificar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="../../../view/eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
     <li><a href="#"></a></li>
 
   </ul>
@@ -276,8 +279,8 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="addFileView.php">Agregar nuevo</a></li>
-    <li><a href="indexFileView.php">Ver archivos</a></li>
+    <li><a href="../../../view/addFileView.php">Agregar nuevo</a></li>
+    <li><a href="../../../view/indexFileView.php">Ver archivos</a></li>
     <li><a href="#"></a></li>
   </ul>
 </li> 
@@ -287,8 +290,8 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="newEquation.php">Agregar ecuacion</a></li>
-    <li><a href="assignEquations.php">Asignar ecuacion</a></li>
+    <li><a href="../../../view/newEquation.php">Agregar ecuacion</a></li>
+    <li><a href="../../../view/assignEquations.php">Asignar ecuacion</a></li>
     <li><a href="#"></a></li>
     <li><a href="#"></a></li>
   </ul>
@@ -296,11 +299,11 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 
 <li class="dropdown">
   <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
-    GrÃ¡ficas
+    Gráficas
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="index.view.php">Ver grÃ¡ficas</a></li>
+    <li><a href="../graph/php/views/grafica.php">Ver gráficas</a></li>
     <li><a href="#"></a></li>
   </ul>
 </li>';

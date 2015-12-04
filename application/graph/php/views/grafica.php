@@ -303,7 +303,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="../graph/php/views/grafica.php">Ver gráficas</a></li>
+    <li><a href="grafica.php">Ver gráficas</a></li>
     <li><a href="#"></a></li>
   </ul>
 </li>';

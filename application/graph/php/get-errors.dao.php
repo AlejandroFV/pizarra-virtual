@@ -21,7 +21,7 @@ if ( mysqli_num_rows($query_result) > 0 ) {
 	while ( $row = mysqli_fetch_array($query_result) ) {
 			$line = $row[0]."\n";
 			fwrite($file_errorData, $line);
-		}	
+	}
 }else{
 	echo "0 results";
 }

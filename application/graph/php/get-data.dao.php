@@ -10,24 +10,18 @@ $sDBPassword = "";
 
 $link = mysqli_connect($sDBServer, $sDBUsername, $sDBPassword, $sDBName);
 
-$query_select = "SELECT count FROM likely_answers";
+$query_select1 = "SELECT * FROM metrics";
 
-$query_result = mysqli_query($link, $query_select);
+$query_result1 = mysqli_query($link, $query_select1);
 
-$row = mysqli_fetch_array($query_result);
+$file_generalData = fopen("../../data/graphGeneralData.txt", "w");
 
-$goods = $row["goods"];
-$bads = $row["bads"];
+fwrite($file_generalData, "");
 
-$arrayGraphGeneral = [] ;
-array_push($arrayGraphGeneral, $goods);
-array_push($arrayGraphGeneral, $bads);
-
-$myfile = fopen("../../data/graphGeneralData.txt", "w");
-
-fwrite($myfile, "");
-
-for ($currentData = 0 ; $currentData < sizeof($arrayGraphGeneral) ; $currentData++ ) { 
-	$data = $arrayGraphGeneral[$currentData] . "\n";
-	fwrite($myfile, $data);
+/*Obtener primero las mlas de todos*/
+if ( mysqli_num_rows($query_result1) > 0 ) {
+	while ( $row = mysqli_fetch_array($query_result1) ) {
+			$line = $row[5]."\n34";
+			fwrite($file_generalData, $line);
+	}
 }

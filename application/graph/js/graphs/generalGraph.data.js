@@ -11,7 +11,7 @@ function generateGeneralData(){
 	/*-------------------------------------------------------------------------------------------
 	*   For the second Grpah [Grpah General Data]
 	--------------------------------------------------------------------------------------------*/
-	this.generalData = ["Buenas", "Malas"];
+	this.generalData = ["Malas", "Buenas"];
 
 	//Axis Y
 	//this.valuesGraph2 = [ 23, 13 ];
@@ -19,8 +19,7 @@ function generateGeneralData(){
 
 function successGeneralGraph(response){
 	var array = response.split("\n");
-
-      for (var i = 0; i < array.length-1; i++) {
+	for (var i = 0; i < array.length-1; i++) {
       	//var currentNumber = parseInt(valuesGraph2[i]);
       	var numericValue = parseInt(array[i]);
       	valuesGraph2.push(numericValue);

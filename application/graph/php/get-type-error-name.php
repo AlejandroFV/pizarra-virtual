@@ -12,7 +12,7 @@ $query_select = "SELECT likely_answer FROM likely_answers";
 $query_result = mysqli_query($link, $query_select);
 
 
-$file_typeErrorName = fopen("../data/graphTypeErrorName.txt", "w");
+$file_typeErrorName = fopen("../../data/graphTypeErrorName.txt", "w");
 fwrite($file_typeErrorName, "");
 
 if ( mysqli_num_rows($query_result) > 0 ) {

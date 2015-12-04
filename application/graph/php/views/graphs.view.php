@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<title>Gráficas</title>
 	<link rel="stylesheet" href="../../../../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../../assets/css/jquery.jqplot.css">
+	<link rel="stylesheet" href="../../../../assets/css/jquery.jqplot.css">
 
 	<!--JQuery-->
-	<script src="../../../assets/js/jquery-1.11.3.js"></script>
+	<script src="../../../../assets/js/jquery-1.11.3.js"></script>
 	
 	<!-- Build the graphs -->
 	<script src="../../js/graphs/generalGraph.data.js"></script>

@@ -3,7 +3,7 @@ var totalNames = 0;
 
 function generateTypeErrorDataName(){
 	var request = $.ajax({
-			url: "../../application/data/graphTypeErrorName.txt",
+			url: "../../data/graphTypeErrorName.txt",
 			type: "get",
 			success : successTypeErrorGraphName,
 			error : errorTypeErrorGraphName

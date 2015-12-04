@@ -3,7 +3,7 @@ var plot1;
 
 function generateTypeErrorData(){
 	var request = $.ajax({
-			url: "../../application/data/graphTypeErrorData.txt",
+			url: "../../data/graphTypeErrorData.txt",
 			type: "get",
 			success : successTypeErrorGraph,
 			error : errorTypeErrorGraph

@@ -1,16 +1,16 @@
 <?php
-
+//session_start();
 if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 	header('Location: login.php');
 }
 ?>
 <html lang="en" class=" overthrow-enabled">
 	<head>
-
-		<script type="text/javascript" src="../../assets/js/jquery-1.11.3.js"></script>
-		<script type="text/javascript" src="../../assets/js/zxml.js"></script>
-		<script src="../../assets/js/jquery.js"></script>
-		<script src="../../assets/js/jquery-ui.js"></script>
+            <meta charset="UTF-8">
+		<script type="text/javascript" src="../../../../assets/js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="../../../../assets/js/zxml.js"></script>
+		<script src="../../../../assets/js/jquery.js"></script>
+		<script src="../../../../assets/js/jquery-ui.js"></script>
 		<script type="text/javascript">
 			function cerrarSesion() {
 
@@ -36,24 +36,24 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 		<title>TUTOR</title>
 
 		<!-- Bootstrap Core -->
-		<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../../assets/css/bootstrap.min.css" rel="stylesheet">
 
 		<!-- Font Awesome -->
-		<link href="../../assets/fonts/css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../../../assets/fonts/css/font-awesome.min.css" rel="stylesheet">
 
 		<!-- Admin Core -->
-		<link href="../../assets/css/nifty.min.css" rel="stylesheet">
+		<link href="../../../../assets/css/nifty.min.css" rel="stylesheet">
 
 		<!-- Roboto Font -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
 
 		<!-- Link to theme -->
-		<link href="../../assets/css/themes/themes-navbar/theme-ocean.min.css" rel="stylesheet">
+		<link href="../../../../assets/css/themes/themes-navbar/theme-ocean.min.css" rel="stylesheet">
 
 		<!-- Application css -->
-		<link href="../../assets/css/app.css" rel="stylesheet">
+		<link href="../../../../assets/css/app.css" rel="stylesheet">
 
-		<script src="../../assets/js/pace.min.js" type="text/javascript"></script>
+		<script src="../../../../assets/js/pace.min.js" type="text/javascript"></script>
 
 		<style type="text/css">
 			.jqstooltip {
@@ -77,28 +77,26 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 			}
 		</style>
                 
-                
-<!--                PARTE DE GRAFICAS-->
-                <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../assets/css/jquery.jqplot.css">
+                <link rel="stylesheet" href="../../../../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../assets/css/jquery.jqplot.css">
 
 	<!--JQuery-->
-	<script src="../../assets/js/jquery-1.11.3.js"></script>
+	<script src="../../../../assets/js/jquery-1.11.3.js"></script>
 	
 	<!-- Build the graphs -->
-	<script src="../../assets/js/graphs/generalGraph.data.js"></script>
-	<script src="../../assets/js/graphs/generalData.name.js"></script>
-	<script src="../../assets/js/graphs/errorsGraph.data.js"></script>
-	<script src="../../assets/js/graphs/errorsGraph.name.js"></script>
+	<script src="../../js/graphs/generalGraph.data.js"></script>
+	<script src="../../js/graphs/generalData.name.js"></script>
+	<script src="../../js/graphs/errorsGraph.data.js"></script>
+	<script src="../../js/graphs/errorsGraph.name.js"></script>
 	
 	<!--Graph core-->
-	<script src="../../assets/js/lib_jqplot/jquery.jqplot.min.js" type="text/javascript"></script>
+	<script src="../../js/lib_jqplot/jquery.jqplot.min.js" type="text/javascript"></script>
 
 	<!-- Graph plugins -->
-	<script src="../../assets/js/lib_jqplot/plugins/jqplot.barRenderer.js"></script>
-	<script src="../../assets/js/lib_jqplot/plugins/jqplot.pieRenderer.js"></script>
-	<script src="../../assets/js/lib_jqplot/plugins/jqplot.categoryAxisRenderer.js"></script>
-	<script src="../../assets/js/lib_jqplot/plugins/jqplot.pointLabels.js"></script>
+	<script src="../../js/lib_jqplot/plugins/jqplot.barRenderer.js"></script>
+	<script src="../../js/lib_jqplot/plugins/jqplot.pieRenderer.js"></script>
+	<script src="../../js/lib_jqplot/plugins/jqplot.categoryAxisRenderer.js"></script>
+	<script src="../../js/lib_jqplot/plugins/jqplot.pointLabels.js"></script>
 	
 	<!-- Function to display the graph -->
 	<script>
@@ -114,8 +112,8 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 
 		}
 	</script>
-
         </head>
+
 		<body class=" nifty-ready pace-done">
 			<!-- Page Loader -->
 			<div class="pace pace-inactive">
@@ -201,18 +199,10 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 					<!--===================================================-->
 					<div id="content-container">
 
-						<div id="login">
-							<h1>Pizarra Virtual</h1>
-
-							
-							<!--========================AQUI VA TODOOO===========================-->
-
-						</div>
-                                            
-                                            <div class="container" id="content-container">
+						<div class="container" id="content-container">
 		
 		<!--========================AQUI VA TODOOO===========================-->
-		
+                
 		<div class="jumbotron text-center">
 			<h1 class="text-center">Gráficas</h1>
 			<p class="text-info">En esta sección se mostrarán las gráficas que proporcionaran al profesor como es que se están comportando los resultados de la prueba.</p> 
@@ -231,8 +221,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 			<div id="barChartGeneralData" style="width:500px; height:600px"></div>
 			<h2 id="info2" class="text-center bg-primary"></h2>
 		</div>
-		
-	</div>
+                    
 
 					</div>
 					<!--===================================================-->
@@ -301,6 +290,17 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     <li><a href="newEquation.php">Agregar ecuacion</a></li>
     <li><a href="assignEquations.php">Asignar ecuacion</a></li>
     <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Gráficas
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="index.view.php">Ver gráficas</a></li>
     <li><a href="#"></a></li>
   </ul>
 </li>';
@@ -407,7 +407,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 			<script src="../../assets/js/jquery.min.js" type="text/javascript"></script>
 
 			<!-- Bootstrap Core JavaScript -->
-			<script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
+			<script src="../../../../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 			<!-- Admin Core -->
 			<!-- <script src="../../assets/js/nifty.min.js" type="text/javascript"></script> -->

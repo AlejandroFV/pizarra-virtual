@@ -3,7 +3,7 @@ var plot2;
 
 function generateGeneralData(){
 	var request = $.ajax({
-			url: "../../application/data/graphGeneralData.txt",
+			url: "../../data/graphGeneralData.txt",
 			type: "get",
 			success : successGeneralGraph,
 			error : errorGeneralGraph

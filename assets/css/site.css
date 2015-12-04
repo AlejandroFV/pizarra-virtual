@@ -49,6 +49,13 @@ h2{
     color: #fcffac;
     padding-right: .5em;
 }
+p#result{
+    color: white;
+    font-family: 'Homemade Apple', cursive;
+    float: right;
+    margin-right: 3em;
+    font-size: 1.15rem;
+}
 #send{
     background-color: transparent;
     border: none;

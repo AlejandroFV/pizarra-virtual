@@ -10,19 +10,19 @@
 	<script src="../../../assets/js/jquery-1.11.3.js"></script>
 	
 	<!-- Build the graphs -->
-	<script src="../js/graphs/generalGraph.data.js"></script>
-	<script src="../js/graphs/generalData.name.js"></script>
-	<script src="../js/graphs/errorsGraph.data.js"></script>
-	<script src="../js/graphs/errorsGraph.name.js"></script>
+	<script src="../../js/graphs/generalGraph.data.js"></script>
+	<script src="../../js/graphs/generalData.name.js"></script>
+	<script src="../../js/graphs/errorsGraph.data.js"></script>
+	<script src="../../js/graphs/errorsGraph.name.js"></script>
 	
 	<!--Graph core-->
-	<script src="../js/lib_jqplot/jquery.jqplot.min.js" type="text/javascript"></script>
+	<script src="../../js/lib_jqplot/jquery.jqplot.min.js" type="text/javascript"></script>
 
 	<!-- Graph plugins -->
-	<script src="../js/lib_jqplot/plugins/jqplot.barRenderer.js"></script>
-	<script src="../js/lib_jqplot/plugins/jqplot.pieRenderer.js"></script>
-	<script src="../js/lib_jqplot/plugins/jqplot.categoryAxisRenderer.js"></script>
-	<script src="../js/lib_jqplot/plugins/jqplot.pointLabels.js"></script>
+	<script src="../../js/lib_jqplot/plugins/jqplot.barRenderer.js"></script>
+	<script src="../../js/lib_jqplot/plugins/jqplot.pieRenderer.js"></script>
+	<script src="../../js/lib_jqplot/plugins/jqplot.categoryAxisRenderer.js"></script>
+	<script src="../../js/lib_jqplot/plugins/jqplot.pointLabels.js"></script>
 	
 	<!-- Function to display the graph -->
 	<script>

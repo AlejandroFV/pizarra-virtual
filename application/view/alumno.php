@@ -54,6 +54,69 @@ $equations_size = sizeof($equations);
   <link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="../../assets/js/jquery.js"></script>
 <script type="text/javascript">
+
+(function(){
+      
+
+    var content = document.getElementById("geolocation-test");
+
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(function(objPosition)
+        {
+            var lon = objPosition.coords.longitude;
+            var lat = objPosition.coords.latitude;
+            var id_user = <?php echo json_encode($_SESSION["id"]); ?>;
+                var datos = {
+                            id_alumn:id_user,
+                            longitud : lon,
+                            latitud : lat,
+                           };
+                            $.ajax({
+                        url: "../controller/location.php",
+                        type: "post",
+                        data: datos ,
+                        success: function (response) {
+                           // you will get response from your php page (what you echo or print)                 
+
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                           console.log(textStatus, errorThrown);
+                        }
+
+
+    });
+                
+
+        }, function(objPositionError)
+        {
+            switch (objPositionError.code)
+            {
+                case objPositionError.PERMISSION_DENIED:
+                    content.innerHTML = "No se ha permitido el acceso a la posición del usuario.";
+                break;
+                case objPositionError.POSITION_UNAVAILABLE:
+                    content.innerHTML = "No se ha podido acceder a la información de su posición.";
+                break;
+                case objPositionError.TIMEOUT:
+                    content.innerHTML = "El servicio ha tardado demasiado tiempo en responder.";
+                break;
+                default:
+                    content.innerHTML = "Error desconocido.";
+            }
+        }, {
+            maximumAge: 75000,
+            timeout: 15000
+        });
+    }
+    else
+    {
+        content.innerHTML = "Su navegador no soporta la API de geolocalización.";
+    }
+})();
+
+
+
     attempt = 1;
     result = 0;
 

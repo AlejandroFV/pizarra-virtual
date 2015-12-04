@@ -10,6 +10,6 @@
 $sDBServer = "localhost";
 $sDBName = "proyecto_ajax";
 $sDBUsername = "root";
-$sDBPassword = "root";
+$sDBPassword = "";
 
 $oLink = mysqli_connect($sDBServer, $sDBUsername, $sDBPassword, $sDBName);

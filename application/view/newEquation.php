@@ -37,7 +37,7 @@ if (isset($_GET['equation'])) {
     //header('location: ../view/assignEquations.php');
   } else {
     //print_r('Success');
-    echo'<script type="text/javascript">alert("Ecuación agregada"); document.location.href="../view/newEquation.php";</script>';
+    echo'<script type="text/javascript">alert("Ecuaciï¿½n agregada"); document.location.href="../view/newEquation.php";</script>';
 	//header('location: ../view/newEquation.php');
   }
 }
@@ -252,7 +252,7 @@ if (isset($_GET['equation'])) {
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
     <li><a href="registrarAlumno.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
     <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
-    <li><a href="users.php"><strong>Ubicación</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="users.php"><strong>Ubicaciï¿½n</strong></a></span> <span class="menu-title"></a></li>
 
   </ul>
 </li>
@@ -315,10 +315,7 @@ if (isset($_GET['equation'])) {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
+    <li><a href="Metricas.php"><strong>Registrar metricas</strong></a></li>
   </ul>
 </li>
 </li>

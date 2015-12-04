@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION["valida"] == false) {
+  if ($_SESSION["valida"] == false&& $_SESSION["role"] != 'alumno') {
       header('Location: login.php');
     error_reporting(0);
   }
@@ -61,7 +61,7 @@
                 <!-- BRAND LOGO & TEXT -->
                 <!--===================================================-->
                 <div class="navbar-header">
-                  <a href="home.html" class="navbar-brand">
+                  <a href="paginaPrincipal.php" class="navbar-brand">
                     <img src="../../assets/images/logo.png" name="Nifty Admin" id="Nifty Admin" class="brand-icon">
                     <span class="brand-title">
                       <span class="brand-text">Pizarra Virtual</span>
@@ -109,7 +109,7 @@
 
                           <!-- Dropdown list -->
                           <li>
-                            <a href="">
+                            <a href="login.php">
                               <i class="fa fa-sign-out fa-fw fa-lg"></i>
                               <span>Salir</span>
                             </a>
@@ -356,34 +356,118 @@
                       <div class="nano has-scrollbar">
                         <div class="nano-content" tabindex="0" style="right: -15px;">
                           <ul id="mainnav-menu" class="list-group">
-                            
-                            <!--Category name-->
-                            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                            <li class="list-header">Navegación</li>
+                            <?php
+                                if ($_SESSION["role"] == 'tutor') {
+                                    echo '
+                                <li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Alumnos
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="registrarAlumno.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="users.php"><Ubicaci�n</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="#"></a></li>
 
-                            <!-- Menu list item -->
-                            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                            <li>
-                              <a href="Metricas.html">
-                                <i class="fa fa-dashboard"></i>
-                                <span class="menu-title"><strong>Metricas</strong></span>
-                              </a>
-                            </li>
+  </ul>
+</li>
 
-                            <li class="list-divider"></li>
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Tutor
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="registrarTutor.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="cambiarDatosTutor.php"><strong>Modificar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="#"></a></li>
 
-                            <!-- Category name -->
-                            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                            <li class="list-header">Otra Categoría</li>
+  </ul>
+</li>
 
-                            <!-- Menu list item-->
-                            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                            <li>
-                              <a href="#">
-                                <i class="fa fa-briefcase"></i>
-                                <span class="menu-title">UI Elements</span>
-                              </a>
-                            </li>
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Archivos
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="addFileView.php">Agregar nuevo</a></li>
+    <li><a href="indexFileView.php">Ver archivos</a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li> 
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Ecuaciones
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="newEquation.php">Agregar ecuacion</a></li>
+    <li><a href="assignEquations.php">Asignar ecuacion</a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>';
+                                } else {
+                                    if ($_SESSION["role"] == 'alumno') {
+                                        echo '
+                                <li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Documentos
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="indexFileView.php"><strong>Ver documentos</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="#"></a></li>
+
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Metricas
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="Metricas.php"><strong>Registrar metricas</strong></a></li>
+    
+  </ul>
+</li>
+<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Cuenta
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="cambiarDatosAlumno.php">Modificar datos</a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>
+';
+                                    } else {
+                                        if ($_SESSION["role"] == 'admin') {
+                                            echo '<li class="dropdown">
+  <a class="menu-title dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"  href="#"><!-- aria-expanded="true" -->
+    Tutores
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
+    <li><a href="#">Alta de tutores</a></li>
+    <li><a href="#">Baja de tutores</a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</li>';
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                
+                                ?>
+                          </ul>  
                         </div>
                       </div>
                     </div>
@@ -429,7 +513,7 @@
     <script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- Admin Core -->
-    <script src="../../assets/js/nifty.min.js" type="text/javascript"></script>
+    <!-- <script src="../../assets/js/nifty.min.js" type="text/javascript"></script> -->
 
 	<!-- ZXML -->
 	<script type="text/javascript" src="../../assets/js/zxml.js"></script>

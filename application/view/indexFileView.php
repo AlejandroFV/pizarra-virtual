@@ -314,7 +314,7 @@ if ($_SESSION["valida"] == true   ) {
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
     <li><a href="registrarAlumno.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
     <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
-    <li><a href="users.php"><strong>Ubicación</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="users.php"><strong>Ubicaciï¿½n</strong></a></span> <span class="menu-title"></a></li>
 
   </ul>
 </li>
@@ -377,10 +377,7 @@ if ($_SESSION["valida"] == true   ) {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
+    <li><a href="Metricas.php"><strong>Registrar metricas</strong></a></li>
   </ul>
 </li>
 </li>

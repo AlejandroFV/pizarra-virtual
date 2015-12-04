@@ -325,10 +325,7 @@ $tutor = $result->fetch_assoc();
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
+    <li><a href="Metricas.php"><strong>Registrar metricas</strong></a></li>
   </ul>
 </li>
 

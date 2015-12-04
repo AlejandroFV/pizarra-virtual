@@ -380,7 +380,7 @@ $equations_size = sizeof($equations);
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
     <li><a href="registrarAlumno.php"><strong>Registrar</strong></a></span> <span class="menu-title"></a></li>
     <li><a href="eliminarUsuario.php"><strong>Eliminar</strong></a></span> <span class="menu-title"></a></li>
-    <li><a href="users.php"><Ubicación</strong></a></span> <span class="menu-title"></a></li>
+    <li><a href="users.php"><Ubicaciï¿½n</strong></a></span> <span class="menu-title"></a></li>
     <li><a href="#"></a></li>
 
   </ul>
@@ -444,10 +444,7 @@ $equations_size = sizeof($equations);
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
+       <li><a href="Metricas.php"><strong>Registrar metricas</strong></a></li>
   </ul>
 </li>
 <li class="dropdown">

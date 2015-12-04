@@ -27,10 +27,11 @@ function normalizeEquation($eq)
   
   return $eq;
 }
-if ($equations !== null and isset($_SESSION['id'])) {
+if ($equations !== null and isset($_SESSION['matricula'])) {
   $i = 0;
   $givenAnswerController = new GivenAnswerController();
   $error = false;
+  $result = 0;
   foreach ($equations as $equation) {
     $answer = $_POST['answer' . $i];
     $answer = str_replace(' ', '', $answer);
@@ -38,12 +39,12 @@ if ($equations !== null and isset($_SESSION['id'])) {
     $correct = strcasecmp($answer, $equation->getAnswer());
     if ($correct == 0) {
       $messages .= '<strong class="correct"><i class="fa fa-check"></i></strong>Respuesta correcta@';
+      $result++;
     } else if ($attempt < 3) {
       $likelyAnswerController = new LikelyAnswerController();
       $likelyAnswer = $likelyAnswerController->getLikelyAnswer($equation->getEquation(), $answer);
       if ($likelyAnswer === null) {
-      	  // TODO pass equation in terms of x, y, z, w
-       $str_equation = normalizeEquation($equation->getEquation());
+        $str_equation = normalizeEquation($equation->getEquation());
         $likelyAnswerController->createLikelyAnswer($str_equation, $answer, 'Revisa tu resultado');
         $likelyAnswerController->updateLikelyAnswer($equation->getEquation(),$answer, 'Revisa tu resultado', 1);
         $messages .= '<strong class="error"><i class="fa fa-exclamation"></i></strong>Revisa tu resultado@';
@@ -62,4 +63,4 @@ if ($equations !== null and isset($_SESSION['id'])) {
     $attempt++;
   }
 }
-echo ($messages !== "")? $attempt . "@" . $messages : "An error ocurred";
+echo ($messages !== "")? $attempt . "@" . $result . "@" . $messages : "An error ocurred";

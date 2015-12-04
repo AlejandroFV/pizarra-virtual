@@ -23,7 +23,7 @@ $arrayGraphGeneral = [] ;
 array_push($arrayGraphGeneral, $goods);
 array_push($arrayGraphGeneral, $bads);
 
-$myfile = fopen("../data/graphGeneralData.txt", "w");
+$myfile = fopen("../../data/graphGeneralData.txt", "w");
 
 fwrite($myfile, "");
 

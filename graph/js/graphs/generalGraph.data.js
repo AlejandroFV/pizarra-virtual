@@ -58,7 +58,7 @@ function createGraphGeneralData(){
 			xaxis: {
 				label:'Casos de éxito y error',
 				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: this.generalData
+				ticks: this.generalData,
 			},
 			yaxis:{
 				label:'Número de personas'

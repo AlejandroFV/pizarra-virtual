@@ -14,7 +14,7 @@ $query_select = "SELECT count FROM likely_answers";
 
 $query_result = mysqli_query($link, $query_select);
 
-$file_errorData = fopen("../../data/graphTypeErrorData.txt", "w");
+$file_errorData = fopen("../data/graphTypeErrorData.txt", "w");
 fwrite($file_errorData, "");
 
 if ( mysqli_num_rows($query_result) > 0 ) {

@@ -3,9 +3,9 @@
 session_start();
 
 //Carga el php para agarrar los datos 
-require("../get-errors.dao.php");
+require("../php/get-errors.dao.php");
 //require("../get-data.dao.php");
-require("../get-type-error-name.php");
+require("../php/get-type-error-name.php");
 
 if (session_status() == PHP_SESSION_ACTIVE) {
 	//SI ya iniciaste sesión muestra las gráficas

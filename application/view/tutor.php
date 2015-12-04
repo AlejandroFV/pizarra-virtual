@@ -247,7 +247,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" style="border-width: 0px"> <!-- aria-labelledby="dropdownMenu1" -->
-    <li><a href="index.view.php">Ver gráficas</a></li>
+    <li><a href="../graph/php/views/tutor.index.php">Ver gráficas</a></li>
     <li><a href="#"></a></li>
   </ul>
 </li>';

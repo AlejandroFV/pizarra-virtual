@@ -20,11 +20,11 @@ function generateGeneralData(){
 function successGeneralGraph(response){
 	var array = response.split("\n");
 	for (var i = 0; i < array.length-1; i++) {
-      	//var currentNumber = parseInt(valuesGraph2[i]);
-      	var numericValue = parseInt(array[i]);
-      	valuesGraph2.push(numericValue);
-      }
-      createGraphGeneralData();
+	      	console.log(array[i]);
+		var numericValue = parseInt(array[i]);
+		valuesGraph2.push(numericValue);
+	}
+	createGraphGeneralData();
 }
 
 function errorGeneralGraph(){

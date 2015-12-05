@@ -26,9 +26,4 @@ if ( mysqli_num_rows($query_result) > 0 ) {
 	echo "0 results";
 }
 
-/*
-for ($currentData = 0 ; $currentData < sizeof($arrayGraphTypeError) ; $currentData++ ) { 
-	$data = $arrayGraphTypeError[$currentData] . "\n";
-	fwrite($file_errorData, $data);
-}
-*/
+mysqli_close($link);

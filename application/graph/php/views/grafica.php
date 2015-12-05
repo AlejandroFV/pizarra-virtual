@@ -407,7 +407,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 			<!-- END OF CONTAINER -->
 
 			<!-- jQuery Version 2.1.4 -->
-			<script src="../../assets/js/jquery.min.js" type="text/javascript"></script>
+			<!--<script src="../../assets/js/jquery.min.js" type="text/javascript"></script>-->
 
 			<!-- Bootstrap Core JavaScript -->
 			<script src="../../../../assets/js/bootstrap.min.js" type="text/javascript"></script>

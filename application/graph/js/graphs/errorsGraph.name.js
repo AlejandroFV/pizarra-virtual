@@ -27,6 +27,6 @@ function errorTypeErrorGraphName(){
 
 function redimentionGraph(){
 	$("#barChartTypeError").css({
-		width: totalNames*100
+		height: totalNames*50
 	});
 }

@@ -46,6 +46,7 @@ function createGraphTypeError(){
             seriesDefaults : {
                 renderer:$.jqplot.BarRenderer,
                 rendererOptions: {
+                    barDirection: 'horizontal',
                     // Set the varyBarColor option to true to use different colors for each bar.
                     // The default series colors are used.
                     varyBarColor: true
@@ -54,13 +55,22 @@ function createGraphTypeError(){
             },
             axes: {
                 xaxis: {
+                    label:'Veces falladas',
+                  labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                  /*
                     label:'Tipos de error',
                     renderer: $.jqplot.CategoryAxisRenderer,
                     ticks: nameTypeError
+                    */
                 },
                 yaxis:{
+                    label:'Tipos de error',
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                    ticks: nameTypeError
+                    /*
                   label:'Veces falladas',
                   labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                  */
                 }
             },
             highlighter: { show: false }

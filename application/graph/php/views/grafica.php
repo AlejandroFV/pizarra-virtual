@@ -214,7 +214,7 @@ if ($_SESSION["valida"] == false && $_SESSION["role"] != 'tutor') {
 		<div class="col-md-12 text-center">
 			<h2 class="text-info text-center">Tabla de tipos de error</h2>
 			<button onclick="displayTypeErrorGraph()" class="btn btn-primary">Mostrar gráffica de errores</button>
-			<div id="barChartTypeError" style="width:1000px; height:600px;"></div>
+			<div id="barChartTypeError" style="width:700px; height:600px;"></div>
 			<h2 id="info1" class="text-center bg-primary"></h2>
 		</div>
 
